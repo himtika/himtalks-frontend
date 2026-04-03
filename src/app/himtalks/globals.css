@@ -1,0 +1,283 @@
+@import "tailwindcss";
+
+/* ROOT COLOR SYSTEM */
+:root {
+  --background: #F5F1E8; /* cream background */
+  --foreground: #3F4F44; /* text utama */
+  --primary: #7A918D; /* sage green */
+  --secondary: #A8B8A5;
+  --accent: #E6DED0;
+  --card: #EAEAEA;
+}
+
+/* fontFamily: {
+        jakartasans: ["var(--font-plus-jakarta-sans)", "sans-serif"],
+        playfair: ["var(--font-playfair)", "serif"],
+        cormorant: ["var(--font-cormorant)", "serif"],
+        poppins: ["var(--font-poppins)", "sans-serif"],
+
+      },
+      colors: {
+      background: "var(--background)",
+      foreground: "var(--foreground)",
+
+      // UI lama (jangan dihapus dulu)
+      purpleNavbar: "#CB9DF0",
+      pinkNavbar: "#F0C1E1",
+      yellowBright: "#FFF9BF",
+      yellowBG: "#FFFBD7",
+      purple: "#C986FF",
+      darkPurple: "#4B0088",
+
+      // UI BARU
+      primary: "#839E8F",
+      cream: "#F4EFE7",
+      card: "#D9D9D9",
+      textMain: "#4E5F5A",
+      accent: "#F5E4A5",
+      darkPrimary: "#5F6F6C",
+    }, */
+
+@theme {
+  --font-cormorant: var(--font-cormorant), serif;
+  --font-poppins: var(--font-poppins), sans-serif;
+  --font-playfair: var(--font-playfair), serif;
+  --color-primaryBG: #EFE9DF;
+  --color-primary: #839E8F;
+  --color-cream: #F4EFE7;
+  --color-card: #D9D9D9;
+  --color-textMain: #4E5F5A;
+  --color-accent: #F5E4A5;
+  --color-darkSage: #5F6F6C;
+  --color-softLeaf: #8FAE9A;
+  --color-dahlia: #FFD1B3;
+  --color-ranting: #F6E7BA;
+  --color-grayArtist: #E5E5EA;
+}
+
+/* disable select image */
+img {
+  user-select: none;
+}
+
+/* BODY */
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{
+  width: 6px;
+}
+
+::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+  background: var(--primary);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: #5f746f;
+}
+
+.custom-scrollbar2::-webkit-scrollbar {
+  height: 6px; /* Bikin tipis aja biar elegan */
+}
+
+.custom-scrollbar2::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.custom-scrollbar2::-webkit-scrollbar-thumb {
+  background: #839E8F; /* Pake warna --color-primary kamu */
+  border-radius: 10px;
+}
+
+.custom-scrollbar2::-webkit-scrollbar-thumb:hover {
+  background: #5F6F6C; /* Pake warna --color-darkSage pas di-hover */
+}
+
+/* CARD STYLE */
+.card-soft{
+  background: var(--card);
+  border-radius: 20px;
+}
+
+/* BUTTON PRIMARY */
+.btn-primary{
+  background: var(--primary);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 8px;
+  transition: 0.25s;
+}
+
+.btn-primary:hover{
+  background: #5f746f;
+}
+
+/* HERO BUTTON */
+/* .btn-hero{
+  background: #6E827E;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-hero:hover{
+  background: #5a6d69;
+} */
+
+/* ANIMATION FADE UP */
+@keyframes fadeUp {
+  0%{
+    opacity:0;
+    transform: translateY(30px);
+  }
+  100%{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp{
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+/* FADE DOWN */
+@keyframes fadeDown {
+  0%{
+    opacity:0;
+    transform: translateY(-30px);
+  }
+  100%{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeDown{
+  animation: fadeDown 0.6s ease-out forwards;
+}
+
+/* SECTION SPACING */
+.section{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+/* FEATURE CARD */
+.feature-card{
+  background: #d8e3e0;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.feature-card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* FOOTER */
+.footer{
+  background: #7A918D;
+  color: #F5F1E8;
+}
+
+.footer a{
+  color: #F5F1E8;
+  opacity: .8;
+}
+
+.footer a:hover{
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+
+  .section{
+    padding-top:60px;
+    padding-bottom:60px;
+  }
+
+}
+
+/* Button BackToHIMTIKA */
+  .Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 255, 255);
+  }
+
+  /* plus sign */
+  .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sign svg {
+    width: 17px;
+  }
+
+  .sign svg path {
+    fill: white;
+  }
+  /* text */
+  .text {
+    /* position: absolute;
+    right: 0%; */
+    width: 0%;
+    opacity: 0;
+    color: rgba(255, 255, 255);
+    background-color: rgb(10, 198, 194);
+    transition-duration: .3s;
+  }
+  /* hover effect on button width */
+  .Btn:hover {
+    width: 160px;
+    border-radius: 40px;
+    transition-duration: .3s;
+    box-shadow: 0px 0px 15px 1px rgba(11, 223, 219);
+  }
+
+  .Btn:hover .sign {
+    width: 35%;
+    transition-duration: .3s;
+    padding-left: 5px;
+  }
+  /* hover effect button's text */
+  .Btn:hover .text {
+    opacity: 1;
+    width: 65%;
+    transition-duration: .3s;
+    /* padding-right: 5px; */
+  }
+  /* button click effect*/
+  .Btn:active {
+    transform: translate(2px ,2px);
+  }
+/* Button BackToHIMTIKA */
+
+
+

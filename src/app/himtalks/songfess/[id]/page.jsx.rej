@@ -1,0 +1,61 @@
+diff a/src/app/himtalks/songfess/[id]/page.jsx b/src/app/himtalks/songfess/[id]/page.jsx	(rejected hunks)
+@@ -276,7 +276,7 @@ export default function SongfessDetailPage() {
+               </div>
+             )}
+             <p className="text-[10px] sm:text-xs md:text-sm lg:text-base font-poppins font-medium leading-5 mt-6 md:mt-8">Also, here's a message from the sender:</p>
+-            <p className="text-lg sm:text-2xl font-semibold mt-4 sm:mt-6 md:mt-8 text-purple lg:text-4xl font-cormorant tracking-tight italic wrap-break-word">"{songfess.content || "No message"}"</p>
++            <p className="text-lg sm:text-2xl font-semibold mt-4 sm:mt-6 md:mt-8 lg:text-4xl font-cormorant tracking-tight italic wrap-break-word">"{songfess.content || "No message"}"</p>
+             <p className="text-[10px] sm:text-xs md:text-sm lg:text-base font-poppins font-medium leading-5 mt-4 md:mt-7">
+               Sent by {songfess.sender_name || "Anonymous"} on {new Date(songfess.created_at).toLocaleDateString()}
+             </p>
+@@ -312,16 +312,16 @@ export default function SongfessDetailPage() {
+                 ref={modalRef}
+                 className={`relative bg-white w-full max-w-[849px] p-8 rounded-xl shadow-md text-center mx-auto transition-all duration-1000`} >
+                   <div className="max-w-[547px] mx-auto ">
+-                    <Dialog.Title className="text-5xl leading-none font-playfair font-normal italic">
++                    <Dialog.Title className="text-3xl md:text-4xl lg:text-5xl leading-none font-playfair font-normal italic">
+                         Hello, <span className="font-extrabold tracking-tight block md:inline">{songfess.recipient_name || "Anonymous"}</span>
+                     </Dialog.Title>
+-                    <p className="font-poppins text-sm md:text-base font-medium mt-7 md:mt-8">
++                    <p className="font-poppins text-[10px] sm:text-xs md:text-sm lg:text-base font-medium mt-4 sm:mt-6 md:mt-8">
+                         There's someone sending you a song, they want you to hear this song
+                         that maybe you'll like :)
+                     </p>
+                     <div className="rounded-lg bg-primary/50 max-w-96 mx-auto p-3 mt-7 md:mt-9">
+                       {/* menyimpan detail lagu */}
+-                      <div className="w-full flex items-center md:items-end gap-4">
++                      <div className="w-full flex items-start md:items-center md:items-end gap-4">
+                         {/* Image Song */}
+                         <div>
+                           <Image
+@@ -336,12 +336,12 @@ export default function SongfessDetailPage() {
+                         {/* Title and Artist Song */}
+                         <div className="flex items-end">
+                           <div>
+-                            <h3 className="mb-4 font-jakarta font-semibold text-darkSage text-2xl tracking-tight text-left">{songfess.song_title || "No music"}</h3>
++                            <h3 className="mb-3 md:mb-4 font-poppins font-semibold text-darkSage text-sm md:text-2xl tracking-tight text-left">{songfess.song_title || "No music"}</h3>
++                            <span className="text-sm font-medium tracking-tight">{songfess.artist || "No artist"}</span>
+                             <div className="flex flex-col-reverse items-start sm:flex sm:flex-row sm:items-center gap-2 relative">
+-                              <button className="rounded-lg bg-darkPurple text-white text-[12px] font-light tracking-tight px-2 cursor-default flex items-end">
++                              <button className="rounded-lg bg-darkSage text-white text-[12px] font-light tracking-tight px-2 cursor-default flex items-end">
+                                 <p className="leading-3.5">Preview</p>
+                               </button>
+-                              <span className="font-[Plus Jakarta Sans] text-sm font-medium tracking-tight absolute -top-1 translate-x-16">{songfess.artist || "No artist"}</span>
+                             </div>
+                             <Link href="#" className="mt-1 flex items-center gap-2">
+                               <Image
+@@ -383,11 +383,11 @@ export default function SongfessDetailPage() {
+                         </div>
+                       </div>
+                     </div>
+-                    <p className="font-poppins font-medium leading-5 mt-6 md:mt-8">
++                    <p className="text-xs md:text-sm lg:text-base font-poppins font-medium leading-5 mt-6 md:mt-8">
+                       Also, here's a message from the sender:
+                     </p>
+-                    <p className="font-semibold mt-6 text-purple text-3xl sm:text-4xl font-cormorant tracking-tight italic wrap-break-word">"{songfess.content || "No message"}"</p>
+-                    <p className="font-poppins font-medium leading-5 mt-4 md:mt-7">Sent by {songfess.sender_name || "Anonymous"} on {new Date(songfess.created_at).toLocaleDateString()}</p>
++                    <p className="text-lg sm:text-2xl font-semibold mt-4 sm:mt-6 md:mt-8 lg:text-4xl font-cormorant text-purple tracking-tight italic wrap-break-word">"{songfess.content || "No message"}"</p>
++                    <p className="text-xs md:text-sm lg:text-base font-poppins font-medium leading-5 mt-4 md:mt-7">Sent by {songfess.sender_name || "Anonymous"} on {new Date(songfess.created_at).toLocaleDateString()}</p>
+                   </div>
+               </Dialog.Panel>
+               </Transition.Child>

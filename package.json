@@ -1,0 +1,30 @@
+{
+  "name": "himtalks-frontend-selaras",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@heroicons/react": "^2.2.0",
+    "autoprefixer": "^10.4.27",
+    "framer-motion": "^12.36.0",
+    "html2canvas": "^1.4.1",
+    "lucide-react": "^1.7.0",
+    "next": "16.1.6",
+    "postcss": "^8.5.8",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "swiper": "^12.1.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4.2.1"
+  }
+}
