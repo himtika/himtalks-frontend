@@ -126,9 +126,7 @@ export default function SongfessDetailPage() {
   };
 
   const closeModal = () => {
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 5000); 
+    setIsOpen(false);
   };
 
   const openModal = () => {
@@ -274,7 +272,7 @@ export default function SongfessDetailPage() {
           <div className="fixed inset-0 bg-black/80" />
           </Transition.Child>
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <div className="flex min-h-full items-center justify-center text-center">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-out duration-1000"
@@ -286,76 +284,73 @@ export default function SongfessDetailPage() {
               >
               <Dialog.Panel
                 ref={modalRef}
-                className={`relative bg-white w-full max-w-[849px] p-8 rounded-xl shadow-md text-center mx-auto transition-all duration-1000`} >
-                  <div className="max-w-[547px] mx-auto ">
-                      <Dialog.Title className="text-3xl md:text-4xl lg:text-5xl leading-none font-playfair font-normal italic">
-                        Hello, <span className="font-extrabold tracking-tight block md:inline">{songfess.recipient_name || "Anonymous"}</span>
+                className={`relative bg-white w-[92%] sm:w-full sm:max-w-[849px] py-6 px-5 sm:py-9 lg:py-13 lg:px-10 rounded-xl shadow-md text-center mx-auto transition-all duration-1000`} >
+                  <div className="max-w-[547px] mx-auto overflow-visible">
+                    <Dialog.Title className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-none font-playfair font-normal italic">
+                        Hello, <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight block md:inline">{songfess.recipient_name || "Anonymous"}</span>
                     </Dialog.Title>
-                    <p className="font-poppins text-[10px] sm:text-xs md:text-sm lg:text-base font-medium mt-4 sm:mt-6 md:mt-8">
+                    <p className="max-w-[80%] md:max-w-full mx-auto font-poppins text-[10px] sm:text-xs md:text-sm lg:text-base font-medium mt-4 sm:mt-6 md:mt-8">
                         There's someone sending you a song, they want you to hear this song
                         that maybe you'll like :)
                     </p>
                     <div className="rounded-lg bg-primary/50 max-w-96 md:max-w-lg mx-auto p-3 mt-7 md:mt-9">
-                      {/* menyimpan detail lagu */}
-                      <div className="w-full flex items-start md:items-center lg:items-start gap-4">
-                        {/* Image Song */}
-                        <div>
+                      {/* Container Utama Detail Lagu */}
+                      <div className="w-full flex items-start gap-4">
+                        {/* BAGIAN 1: Image Song - Pakai flex-shrink-0 supaya tidak terhimpit */}
+                        <div className="shrink-0">
                           <Image
-                              src={songfess.album_art || "/songfess/image-default-spotify.png"}
-                              width={128}
-                              height={128}
-                              alt="Song Image"
-                              draggable={false}
-                              className="rounded-md w-32 h-32 md:w-40 md:h-40"
+                            src={songfess.album_art || "/songfess/image-default-spotify.png"}
+                            width={128}
+                            height={128}
+                            alt="Song Image"
+                            draggable={false}
+                            className="rounded-md w-28 h-28 md:w-36 md:h-36 object-cover"
                           />
                         </div>
-                        {/* Title and Artist Song */}
-                        <div className="flex items-end">
-                          <div>
-                            <h3 className="mb-3 md:mb-4 font-poppins font-semibold text-darkSage text-sm md:text-xl lg:text-[24px] tracking-tight text-left">{songfess.song_title || "No music"}</h3>
-                            <span className="mb-1.5 text-xs md:text-sm text-left flex justify-start font-medium tracking-tight">{songfess.artist || "No artist"}</span>
-                            <div className="flex flex-col-reverse items-start sm:flex sm:flex-row sm:items-center gap-2 relative">
-                              <button className="rounded-lg bg-darkSage text-white text-[12px] font-light tracking-tight px-2 cursor-default flex items-end">
-                                <p className="leading-3.5">Preview</p>
-                              </button>
+
+                        {/* BAGIAN 2: Title and Artist Song - Pakai min-w-0 supaya text wrapping jalan */}
+                        <div className="flex flex-col justify-between min-w-0 w-full h-28 md:h-36">
+                          <div className="min-w-0">
+                            {/* Judul Lagu: Pakai line-clamp atau tetap biarkan wrap, ukuran text dinamis di mobile */}
+                            <h3 className="font-poppins font-semibold text-darkSage text-sm md:text-lg lg:text-xl tracking-tight text-left leading-tight wrap-break-word line-clamp-3 text-ellipsis">
+                              {songfess.song_title || "No music"}
+                            </h3>
+                            <span className="mt-1 text-[10px] md:text-sm text-left block font-medium tracking-tight text-gray-600 truncate">
+                              {songfess.artist || "No artist"}
+                            </span>
+                          </div>
+
+                          {/* Bagian Bawah: Tombol & Player */}
+                          <div className="flex justify-start mt-auto">
+                            <div className="flex flex-col gap-1">
+                              <div className="flex items-center">
+                                <button className="rounded-md bg-darkSage text-white text-[10px] md:text-[12px] font-light tracking-tight px-2 py-0.5 cursor-default">
+                                  Preview
+                                </button>
+                              </div>
+                              <Link href="#" className="flex items-center gap-1.5 group">
+                                <Image
+                                  src="/icons/add-plus.svg"
+                                  width={14}
+                                  height={14}
+                                  alt="Add"
+                                  className="md:w-[17px] md:h-[17px]"
+                                />
+                                <p className="font-medium text-[11px] md:text-sm tracking-tight text-darkPurple group-hover:underline">
+                                  Save on spotify
+                                </p>
+                              </Link>
                             </div>
-                            <Link href="#" className="mt-1 flex items-center gap-2">
-                              <Image
-                                src="/icons/add-plus.svg"
-                                width={17}
-                                height={17}
-                                alt="Add"
-                                draggable={false}
-                              />
-                              <p className="font-medium text-sm tracking-tight text-darkPurple hover:underline">Save on spotify</p>
-                            </Link>
                           </div>
                         </div>
                       </div>
 
-                      {/* div tombol */}
-                      <div className="w-full mt-2 flex justify-end items-center gap-3">
-                        {/* titik tiga */}
-                        <div className="relative hover:bg-white w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500">
-                          <Image
-                            src="/icons/more-option.svg"
-                            width={19}
-                            height={4}
-                            alt="Add"
-                            draggable={false}
-                            className="absolute right-1.5"
-                          />
+                      <div className="w-full flex items-center justify-end">
+                        <div className="relative hover:bg-white w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer">
+                          <Image src="/icons/more-option.svg" width={16} height={4} alt="Option" />
                         </div>
-                        {/* tombol pause */}
-                        <div className="relative bg-white w-8 h-8 rounded-full flex items-center justify-center">
-                          <Image
-                            src="/icons/pause.svg"
-                            width={11}
-                            height={15}
-                            alt="Add"
-                            draggable={false}
-                            className="absolute right-[9px]"
-                          />
+                        <div className="relative bg-white w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center shadow-sm cursor-pointer hover:scale-105 transition-transform">
+                          <Image src="/icons/pause.svg" width={10} height={14} alt="Pause" />
                         </div>
                       </div>
                     </div>

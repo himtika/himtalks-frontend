@@ -1,9 +1,4 @@
 import "./himtalks/globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import PageTransition from "@/components/ui/PageTransition";
-import StairTransition from "@/components/ui/StairTransition";
-import BackToHIMTIKA from "@/components/BackToHIMTIKA";
 import { Cormorant_Garamond, Poppins, Playfair_Display } from "next/font/google";
 
 export const metadata = {
