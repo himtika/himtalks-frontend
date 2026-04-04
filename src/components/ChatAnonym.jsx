@@ -110,7 +110,7 @@ export default function ChatAnonym() {
 
     return (
         <>
-            <section className="pt-34 lg:pt-44 pb-28 px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 bg-primaryBG text-[#5E6F64] selection:bg-darkSage selection:text-white">
+            <section className="pt-34 lg:pt-44 pb-28 px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 bg-primaryBG text-[#5E6F64] selection:bg-darkSage selection:text-white overflow-x-hidden">
                 <h1 className="font-playfair italic font-bold max-w-70 md:max-w-full text-4xl md:text-5xl xl:text-6xl text-darkSage mt-4 mb-4 sm:mb-2 transition-all duration-500 mx-auto text-center">
                     Speak freely, stay anonymous
                 </h1>
