@@ -23,7 +23,7 @@ export default function Footer() {
                     alt="Logo HIMTALKS"
                     className="w-60 h-40 sm:w-65 sm:h-42 select-none"
                   />
-                  <h2 className="font-poppins tracking-wide font-medium lg:font-semibold text-yellowBright text-4xl md:text-5xl leading-none">
+                  <h2 className="font-poppins tracking-wide font-semibold text-yellowBright text-4xl md:text-5xl leading-none">
                     Himtalks
                   </h2>
                 </div>
