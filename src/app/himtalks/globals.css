@@ -101,6 +101,24 @@ body {
   background: #5F6F6C; /* Pake warna --color-darkSage pas di-hover */
 }
 
+/* ANIMASI MARQUEE JUDUL SONGFESS */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 10s linear infinite;
+}
+
+/* Biar berhenti pas di-hover */
+.group:hover .animate-marquee {
+  animation-play-state: running; /* Atau 'paused' kalau mau berhenti */
+}
+/* ANIMASI MARQUEE JUDUL SONGFESS */
+
 /* CARD STYLE */
 .card-soft{
   background: var(--card);

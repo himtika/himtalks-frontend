@@ -4,7 +4,7 @@ import "./../app/himtalks/globals.css";
 export default function BackToHIMTIKA() {    
     return (
         <>
-            <div className="fixed bottom-8 right-9 z-10">
+            <div className="fixed bottom-5 right-5 md:bottom-8 md:right-9 z-10">
                 <a href="https://himtika.cs.unsika.ac.id/">
                     <button className="Btn">
                         <div className="sign">

@@ -61,7 +61,7 @@ export default function Hero() {
             width={500}
             height={429}
             alt="illustration"
-            className="w-80 h-56 md:w-96 md:h-70 lg:w-130 lg:h-95 select-none"
+            className="w-70 h-46 md:w-96 md:h-70 lg:w-130 lg:h-95 select-none"
           />
         </div>
 
@@ -82,7 +82,7 @@ export default function Hero() {
                 featureSection.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="font-poppins inline-block font-light bg-darkSage text-white px-8 py-3 sm:px-6 sm:py-2 rounded-lg hover:bg-[#667b77] hover:-translate-y-1 transition duration-500"
+              className="font-poppins inline-block font-light bg-darkSage text-white px-6 py-2 sm:px-8 sm:py-3 rounded-lg hover:bg-[#667b77] hover:-translate-y-1 transition duration-500"
             >
               Start Now!
             </button>

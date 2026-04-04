@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Fragment, useState, useRef, useEffect } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import {
@@ -15,6 +17,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
 export default function SongfessForm() {
   // Tambahan Raika
+  const router = useRouter();
   const [showOverlay, setShowOverlay] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [startTime, setStartTime] = useState(0);
@@ -86,6 +89,27 @@ export default function SongfessForm() {
     return () => clearTimeout(delayDebounce);
   }, [query]);
 
+
+  // (Bang Raika) mengontrol pause/play
+  const handlePlayPause = () => {
+    if (!selected?.preview_url) {
+      alert("Lagu ini tidak punya preview 😢");
+      return;
+    }
+
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => alert("Gagal play audio"));
+    }
+  };
+
   // (Bang Raika) menjalankan lagu saat lagu dipilih
   useEffect(() => {
     if (!selected || !audioRef.current) return;
@@ -103,26 +127,6 @@ export default function SongfessForm() {
 
     setIsPlaying(false);
   }, [selected]);
-
-  // (Bang Raika) mengontrol pause/play
-const handlePlayPause = () => {
-  if (!selected?.preview_url) {
-    alert("Lagu ini tidak punya preview 😢");
-    return;
-  }
-
-  if (!audioRef.current) return;
-
-  if (isPlaying) {
-    audioRef.current.pause();
-    setIsPlaying(false);
-  } else {
-    audioRef.current
-      .play()
-      .then(() => setIsPlaying(true))
-      .catch(() => alert("Gagal play audio"));
-  }
-};
 
   // (Raika) Untuk pengaturan hiddenkan icon play ketika lagu menyala
   // useEffect(() => {
@@ -148,7 +152,7 @@ const handlePlayPause = () => {
     } else {
       setShowOverlay(true); // Saat pause atau belum ada lagu, overlay tetap muncul
     }
-  }, [isPlaying]);
+  }, [isPlaying, selected]);
 
   // Pilih lagu dari hasil pencarian
   function handleSelectSong(song) {
@@ -177,51 +181,43 @@ const handlePlayPause = () => {
             ),
         );
 
-  // (Kang Jibran) Preview lagu (jika ada preview_url)
-  function handlePreview() {
-    if (selected?.preview_url && audioRef.current) {
-      audioRef.current.src = selected.preview_url;
-      audioRef.current.play();
-    }
-  }
-
   // (Raika) Fungsi validasi format waktu
- const isValidTimeFormat = (time) => {
-  return /^\d{1,2}(\.\d{1,2})?$/.test(time);
-};
+  const isValidTimeFormat = (time) => {
+    return /^\d{1,2}(\.\d{1,2})?$/.test(time);
+  };
 
-const convertToSeconds = (time) => {
-  if (!time) return 0;
+  const convertToSeconds = (time) => {
+    if (!time) return 0;
 
-  const parts = time.split(".");
-  const minutes = parseInt(parts[0]) || 0;
-  const seconds = parseInt(parts[1]) || 0;
+    const parts = time.split(".");
+    const minutes = parseInt(parts[0]) || 0;
+    const seconds = parseInt(parts[1]) || 0;
 
-  return minutes * 60 + seconds;
-};
+    return minutes * 60 + seconds;
+  };
 
-const validateTimeInput = (name, value) => {
-  let newErrors = { ...errors };
+  const validateTimeInput = (name, value) => {
+    let newErrors = { ...errors };
 
-  if (!value) {
-    newErrors[name] = "";
-  } else if (!isValidTimeFormat(value)) {
-    newErrors[name] = "Format mm.ss (contoh: 01.30)";
-  } else {
-    newErrors[name] = "";
-  }
-
-  const start = name === "startTime" ? value : formData.startTime;
-  const end = name === "endTime" ? value : formData.endTime;
-
-  if (start && end) {
-    if (convertToSeconds(end) < convertToSeconds(start)) {
-      newErrors.endTime = "End harus lebih besar dari start";
+    if (!value) {
+      newErrors[name] = "";
+    } else if (!isValidTimeFormat(value)) {
+      newErrors[name] = "Format mm.ss (contoh: 01.30)";
+    } else {
+      newErrors[name] = "";
     }
-  }
 
-  setErrors(newErrors);
-};
+    const start = name === "startTime" ? value : formData.startTime;
+    const end = name === "endTime" ? value : formData.endTime;
+
+    if (start && end) {
+      if (convertToSeconds(end) < convertToSeconds(start)) {
+        newErrors.endTime = "End harus lebih besar dari start";
+      }
+    }
+
+    setErrors(newErrors);
+  };
 
   // (Raika) Handle perubahan input
   const handleTimeChange = (e) => {
@@ -313,7 +309,9 @@ const validateTimeInput = (name, value) => {
         setSongs([]);
         setQuery("");
         setSubmitStatus("success");
-        setTimeout(() => setSubmitStatus(null), 5000);
+        setTimeout(() => setSubmitStatus(null), 5000);setTimeout(() => {
+          router.push("/himtalks/songfess/browse-songfess");
+        }, 5500);
       }
     } catch (error) {
       console.error("Error submitting songfess:", error);
@@ -325,11 +323,17 @@ const validateTimeInput = (name, value) => {
 
   return (
     <>
-      <section className="pt-28 md:pt-36 lg:pt-42 pb-28 px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 bg-primaryBG text-black transition-all duration-500 selection:bg-primary selection:text-white">
-        <h1 className="font-playfair italic font-bold max-w-80 md:max-w-full text-4xl md:text-5xl xl:text-6xl text-darkSage tracking-tight mt-4 mb-4 sm:mb-2 transition-all duration-500 mx-auto text-center">
+      <section className="pt-22 md:pt-25 lg:pt-30 pb-28 px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 bg-primaryBG text-black transition-all duration-500 selection:bg-primary">
+        <Link href="/himtalks/songfess" className="flex items-center gap-2 text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 md:mb-15 text-darkSage font-cormorant font-extrabold tracking-tight w-fit hover:-translate-x-1 md:hover:-translate-x-2 transition-all duration-500">
+            <svg className="w-2 h-4 md:w-3 md:h-6" width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" clipRule="evenodd" d="M9.99965 19.438L8.95465 20.5L1.28865 12.71C1.10415 12.5197 1.00098 12.2651 1.00098 12C1.00098 11.7349 1.10415 11.4803 1.28865 11.29L8.95465 3.5L9.99965 4.563L2.68165 12L9.99965 19.438Z" fill="#5F6F6C"/>
+            </svg>
+            <span className="selection:text-white">Return to songfess menu</span>
+        </Link>
+        <h1 className="font-playfair italic font-bold max-w-80 md:max-w-full text-4xl md:text-5xl xl:text-6xl text-darkSage tracking-tight mt-4 mb-4 sm:mb-2 transition-all duration-500 mx-auto text-center selection:text-white">
           Send your songfess on Himtalks
         </h1>
-        <p className="w-[80%] md:max-w-3xl text-center font-cormorant font-semibold text-base sm:text-lg lg:text-xl xl:text-2xl text-darkSage mt-6 md:mt-8 mx-auto leading-5 sm:leading-6">
+        <p className="w-[80%] md:max-w-3xl text-center font-cormorant font-semibold text-base sm:text-lg lg:text-xl xl:text-2xl text-darkSage mt-6 md:mt-8 mx-auto leading-5 sm:leading-6 selection:text-white">
           Jangan simpan ceritamu sendiri. Biarkan musik menjadi jembatan untuk
           menyampaikan perasaanmu.
         </p>
@@ -352,7 +356,7 @@ const validateTimeInput = (name, value) => {
           <AnimatePresence>
             {submitStatus === "success" && (
               <motion.div
-                className="z-20 top-8 right-8 left-8 absolute p-3 bg-green-200 text-green-800 rounded-md"
+                className="z-20 top-24 sticky mb-4 p-3 bg-green-200 text-green-800 rounded-md"
                 initial={{ opacity: 0, y: -10 }} // Mulai dari transparan dan agak ke atas
                 animate={{ opacity: 1, y: 0 }} // Muncul dengan smooth
                 exit={{ opacity: 0, y: -10 }} // Menghilang dengan smooth
@@ -363,7 +367,7 @@ const validateTimeInput = (name, value) => {
             )}
             {submitStatus === "error" && (
               <motion.div
-                className="z-20 top-8 right-8 left-8 absolute bg-red-200 text-red-800 rounded-md"
+                className="z-20 top-24 sticky mb-4 p-3 bg-red-200 text-red-800 rounded-md"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -376,7 +380,7 @@ const validateTimeInput = (name, value) => {
           <form onSubmit={handleSubmit}>
             <div className="w-full font-poppins">
               <div className="mb-6">
-                <h3 className="text-center font-cormorant italic text-2xl sm:text-3xl mb-2 font-semibold">
+                <h3 className="text-center font-cormorant italic text-2xl sm:text-3xl mb-0.5 md:mb-2 font-semibold">
                 Send ur Songfess
                 </h3>
                 <Image
@@ -388,7 +392,7 @@ const validateTimeInput = (name, value) => {
                 />
               </div>
               <div className="mb-3 sm:mb-6">
-                <label className="text-white font-normal text-xs sm:text-sm selection:bg-white selection:text-textMain">
+                <label className="text-white font-normal text-xs sm:text-sm selection:bg-white selection:text-primary">
                   Enter ur name
                 </label>
                 <input
@@ -459,7 +463,7 @@ const validateTimeInput = (name, value) => {
                     >
                       <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm z-50 custom-scrollbar">
                         {filteredSongs.length === 0 && query !== "" ? (
-                          <div className="relative cursor-default select-none px-4 py-2 text-gray-700">
+                          <div className="relative text-xs sm:text-sm cursor-default select-none px-4 py-2 text-gray-700">
                             No Results.
                           </div>
                         ) : (
@@ -467,14 +471,14 @@ const validateTimeInput = (name, value) => {
                             <Combobox.Option
                               key={song.id}
                               className={({ active }) =>
-                                `relative cursor-pointer select-none py-2 px-4 ${active ? "bg-darkSage text-white" : "text-gray-900"}`
+                                `relative cursor-pointer select-none py-1.5 px-3 md:py-2 md:px-4 ${active ? "bg-darkSage text-white" : "text-gray-900"}`
                               }
                               value={song}
                             >
                               {({ selected, active }) => (
                                 <div className="flex items-center gap-2 md:gap-3">
                                   {/* Gambar Lagu */}
-                                  <div className="w-12 h-12 shrink-0">
+                                  <div className="w-9.5 h-9.5 md:w-12 md:h-12 shrink-0">
                                     <Image
                                       src={
                                         song.album.images[0]?.url ||
@@ -529,7 +533,7 @@ const validateTimeInput = (name, value) => {
               <div className="mb-3 sm:mb-6 mt-2">
                 <div
                   onClick={() => {
-                    if (!selected) return;
+                      if (!selected) return;
                       handlePlayPause();
                     }}
                   // if (selected) handlePlayPause();
@@ -555,7 +559,7 @@ const validateTimeInput = (name, value) => {
                         <div
                           className={clsx(
                             "absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center rounded-md cursor-pointer transition-all duration-500",
-                            showOverlay ? "opacity-100" : "opacity-0",
+                            showOverlay ? "opacity-0 hover:opacity-80" : "opacity-0",
                           )}
                         >
                           {isPlaying ? (

@@ -161,7 +161,7 @@ export default function ChatAnonym() {
                     <form onSubmit={handleSubmit}>
                             <div className="w-full font-poppins">
                                 <div className="mb-3 sm:mb-6">
-                                    <h3 className="text-center font-cormorant italic text-xl sm:text-2xl md:text-3xl mb-2 font-semibold">
+                                    <h3 className="text-center font-cormorant italic text-xl sm:text-2xl md:text-3xl mb-0.5 md:mb-2 font-semibold">
                                     Send ur Anonym Chat
                                     </h3>
                                     <Image

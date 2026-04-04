@@ -102,12 +102,12 @@ export default function OurFitur(){
       </div>
 
       {/* Card Grid */}
-      <div className="flex flex-col gap-8 lg:flex-wrap lg:flex-row justify-between w-[75%] md:w-[90%] lg:max-w-6xl mx-auto">
+      <div className="flex flex-col gap-8 lg:flex-wrap lg:flex-row justify-between w-[75%] md:max-w-3xl bg-red-500 lg:w-full mx-auto">
         {/* CARD 1 CHAT ANONYM */}
         <div
           onMouseEnter={handleEnter1}
           onMouseLeave={handleLeave1}
-          className={`max-w-90 mx-auto rounded-2xl shadow-md overflow-hidden transition-all duration-500
+          className={`max-w-90 mx-auto rounded-2xl shadow-lg overflow-hidden transition-all duration-500
           ${isHoverCard1 ? "bg-ranting -translate-y-3 scale-103" : "bg-primary"}`}
         >
           {/* IMAGE HEADER */}
@@ -125,21 +125,21 @@ export default function OurFitur(){
           </div>
         
           <div className="px-5 pb-5 pt-1 font-poppins text-white">
-            <h3 href="#" className={`block mb-3 font-medium md:font-semibold text-lg md:text-xl lg:text-2xl transition-all duration-700 ${isHoverCard1 ? "text-black " : "group-hover:text-black text-white"}`}>
+            <h3 href="#" className={`block mb-3 font-semibold text-lg md:text-xl lg:text-2xl transition-all duration-700 ${isHoverCard1 ? "text-black " : "group-hover:text-black text-white"}`}>
               Chat Anonym
             </h3>
             <p className={`font-semilight sm:font-normal text-xs sm:text-sm mb-6 sm:leading-6 transition-all duration-700 ${isHoverCard1 ? "text-black" : "group-hover:text-black text-white"}`}>
                 Ruang terbuka untuk berbagi ide dan bertukar gagasan 
             </p>
             <button 
-                className="inline-flex justify-center items-center gap-1 sm:gap-2 bg-darkSage py-1 px-3 md:py-2 md:px-4 rounded-lg hover:opacity-80 transition duration-500 peer"
+                className="inline-flex justify-center items-center gap-1 sm:gap-2 bg-darkSage py-0.5 px-3 md:py-2 md:px-4 rounded-lg hover:opacity-80 transition duration-500 peer"
                 onMouseEnter={handleMouseEnterButton1}
                 onMouseLeave={handleMouseLeaveButton1}
                 >
                 <Link href="/himtalks/chat-anonym" className="font-light text-xs sm:text-sm text-white">
                     Send Now
                 </Link>
-                <svg className={`transition-transform duration-700 w-6.5 sm:w-8 ${isHoverButton1 ? "rotate-90" : "peer-hover:rotate-90 rotate-0"}`}  width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className={`transition-transform duration-700 w-6 sm:w-8 ${isHoverButton1 ? "rotate-90" : "peer-hover:rotate-90 rotate-0"}`}  width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.8335 22.6667L23.1668 9.33337M23.1668 9.33337H9.8335M23.1668 9.33337V22.6667" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
             </button>
@@ -150,7 +150,7 @@ export default function OurFitur(){
         <div
           onMouseEnter={handleEnter2}
           onMouseLeave={handleLeave2}
-          className={`max-w-90 mx-auto rounded-2xl shadow-md overflow-hidden transition-all duration-500
+          className={`max-w-90 mx-auto rounded-2xl shadow-lg overflow-hidden transition-all duration-500
           ${isHoverCard2 ? "bg-dahlia -translate-y-3 scale-103" : "bg-primary"}`}
         >
 
@@ -169,21 +169,21 @@ export default function OurFitur(){
           </div>
 
           <div className="px-5 pb-5 pt-1 font-poppins text-white">
-            <h3 href="#" className={`block mb-3 font-medium md:font-semibold text-lg md:text-xl lg:text-2xl transition-all duration-700 ${isHoverCard2 ? "text-black " : "group-hover:text-black text-white"}`}>
+            <h3 href="#" className={`block mb-3 font-semibold text-lg md:text-xl lg:text-2xl transition-all duration-700 ${isHoverCard2 ? "text-black " : "group-hover:text-black text-white"}`}>
             Songfess
             </h3>
             <p className={`font-semilight sm:font-normal text-xs sm:text-sm mb-6 sm:leading-6 transition-all duration-700 ${isHoverCard2 ? "text-black" : "group-hover:text-black text-white"}`}>
                 Ekspresikan perasaanmu melalui lagu dengan fitur Songfess!
             </p>
             <button 
-                className="inline-flex justify-center items-center gap-1 sm:gap-2 bg-darkSage py-1 px-3 md:py-2 md:px-4 rounded-lg hover:opacity-80 transition duration-500 peer"
+                className="inline-flex justify-center items-center gap-1 sm:gap-2 bg-darkSage py-0.5 px-3 md:py-2 md:px-4 rounded-lg hover:opacity-80 transition duration-500 peer"
                 onMouseEnter={handleMouseEnterButton2}
                 onMouseLeave={handleMouseLeaveButton2}
                 >
                 <Link href="/himtalks/songfess" className="font-light text-xs sm:text-sm text-white">
                     Send Now
                 </Link>
-                <svg className={`transition-transform duration-700 w-6.5 sm:w-8 ${isHoverButton2 ? "rotate-90" : "peer-hover:rotate-90 rotate-0"}`}  width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className={`transition-transform duration-700 w-6 sm:w-8 ${isHoverButton2 ? "rotate-90" : "peer-hover:rotate-90 rotate-0"}`}  width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.8335 22.6667L23.1668 9.33337M23.1668 9.33337H9.8335M23.1668 9.33337V22.6667" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
             </button>
@@ -194,7 +194,7 @@ export default function OurFitur(){
         <div
           onMouseEnter={handleEnter3}
           onMouseLeave={handleLeave3}
-          className={`max-w-90 mx-auto rounded-2xl shadow-md overflow-hidden transition-all duration-500
+          className={`max-w-90 mx-auto rounded-2xl shadow-lg overflow-hidden transition-all duration-500
           ${isHoverCard3 ? "bg-[#ddba58] -translate-y-3 scale-103" : "bg-primary"}`}
         >
 
@@ -214,21 +214,21 @@ export default function OurFitur(){
 
           
           <div className="px-5 pb-5 pt-1 font-poppins text-white">
-            <h3 href="#" className={`block mb-3 font-medium md:font-semibold text-lg md:text-xl lg:text-2xl transition-all duration-700 ${isHoverCard3 ? "text-black " : "group-hover:text-black text-white"}`}>
+            <h3 href="#" className={`block mb-3 font-semibold text-lg md:text-xl lg:text-2xl transition-all duration-700 ${isHoverCard3 ? "text-black " : "group-hover:text-black text-white"}`}>
               Mini Forum
             </h3>
             <p className={`font-semilight sm:font-normal text-xs sm:text-sm mb-6 sm:leading-6 transition-all duration-700 ${isHoverCard3 ? "text-black" : "group-hover:text-black text-white"}`}>
               Mari berdiskusi dan temukan inspirasi baru bersama di Mini Forum!
             </p>
             <button 
-                className="inline-flex justify-center items-center gap-1 sm:gap-2 bg-darkSage py-1 px-3 md:py-2 md:px-4 rounded-lg hover:opacity-80 transition duration-500 peer"
+                className="inline-flex justify-center items-center gap-1 sm:gap-2 bg-darkSage py-0.5 px-3 md:py-2 md:px-4 rounded-lg hover:opacity-80 transition duration-500 peer"
                 onMouseEnter={handleMouseEnterButton3}
                 onMouseLeave={handleMouseLeaveButton3}
                 >
                 <Link href="/himtalks/mini-forum" className="font-light text-xs sm:text-sm text-white">
                     Join Now
                 </Link>
-                <svg className={`transition-transform duration-700 w-6.5 sm:w-8 ${isHoverButton3 ? "rotate-90" : "peer-hover:rotate-90 rotate-0"}`}  width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className={`transition-transform duration-700 w-6 sm:w-8 ${isHoverButton3 ? "rotate-90" : "peer-hover:rotate-90 rotate-0"}`}  width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.8335 22.6667L23.1668 9.33337M23.1668 9.33337H9.8335M23.1668 9.33337V22.6667" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
             </button>

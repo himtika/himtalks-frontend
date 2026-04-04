@@ -110,3 +110,5 @@ export default function ForumCard({ forum }) {
     </div>
   );
 }
+
+
