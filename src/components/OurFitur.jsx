@@ -102,16 +102,16 @@ export default function OurFitur(){
       </div>
 
       {/* Card Grid */}
-      <div className="flex flex-col gap-8 lg:flex-wrap lg:flex-row justify-between w-[75%] md:max-w-3xl bg-red-500 lg:w-full mx-auto">
+      <div className="flex flex-col gap-8 lg:flex-wrap lg:flex-row justify-between w-full max-w-[75%] md:max-w-2xl xl:max-w-5xl mx-auto">
         {/* CARD 1 CHAT ANONYM */}
         <div
           onMouseEnter={handleEnter1}
           onMouseLeave={handleLeave1}
-          className={`max-w-90 mx-auto rounded-2xl shadow-lg overflow-hidden transition-all duration-500
+          className={`max-w-80 mx-auto rounded-2xl shadow-lg overflow-hidden transition-all duration-500
           ${isHoverCard1 ? "bg-ranting -translate-y-3 scale-103" : "bg-primary"}`}
         >
           {/* IMAGE HEADER */}
-          <div className="relative w-full h-45 sm:h-60 md:h-65">
+          <div className="relative w-full h-45 sm:h-60 lg:h-55 xl:h-60 2xl:h-65">
             <Image
               src="/himtalks/card1.webp"
               alt="chat-anonym"
@@ -150,12 +150,12 @@ export default function OurFitur(){
         <div
           onMouseEnter={handleEnter2}
           onMouseLeave={handleLeave2}
-          className={`max-w-90 mx-auto rounded-2xl shadow-lg overflow-hidden transition-all duration-500
+          className={`max-w-80 mx-auto rounded-2xl shadow-lg overflow-hidden transition-all duration-500
           ${isHoverCard2 ? "bg-dahlia -translate-y-3 scale-103" : "bg-primary"}`}
         >
 
           {/* IMAGE HEADER */}
-          <div className="relative w-full h-45 md:h-65">
+          <div className="relative w-full h-45 lg:h-55 xl:h-60 2xl:h-65">
             <Image
               src="/himtalks/card2.webp"
               alt="Songfess"
@@ -194,12 +194,12 @@ export default function OurFitur(){
         <div
           onMouseEnter={handleEnter3}
           onMouseLeave={handleLeave3}
-          className={`max-w-90 mx-auto rounded-2xl shadow-lg overflow-hidden transition-all duration-500
+          className={`max-w-80 mx-auto rounded-2xl shadow-lg overflow-hidden transition-all duration-500
           ${isHoverCard3 ? "bg-[#ddba58] -translate-y-3 scale-103" : "bg-primary"}`}
         >
 
           {/* IMAGE HEADER */}
-          <div className="relative w-full h-45 md:h-65">
+          <div className="relative w-full h-45 lg:h-55 xl:h-60 2xl:h-65">
             <Image
               src="/himtalks/card3.webp"
               alt="Mini Forum"
