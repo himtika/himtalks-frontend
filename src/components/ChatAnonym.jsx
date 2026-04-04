@@ -258,7 +258,7 @@ export default function ChatAnonym() {
                                         required
                                         value={message}
                                         onChange={handleChange}
-                                        className="w-full mt-1 sm:mt-2 p-2 sm:p-3 rounded-md bg-white text-gray-700 text-xs sm:text-sm resize-none focus:outline-none"
+                                        className="w-full mt-1 sm:mt-2 p-2 sm:p-3 rounded-md bg-white text-gray-700 text-[10px] sm:text-xs md:text-sm  resize-none focus:outline-none"
                                         rows={1}
                                     />      
                                 </div>
