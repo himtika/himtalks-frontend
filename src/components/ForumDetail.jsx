@@ -29,6 +29,7 @@ function timeAgo(date) {
 export default function ForumDetail({ forumId }) {
 const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [open, setOpen] = useState(true);
   const [loading, setLoading] = useState(true);
   const [forum, setForum] = useState(null);
@@ -219,11 +220,11 @@ const router = useRouter();
               </div>
             </div>
 
-            <h1 className="text-base md:text-lg lg:text-xl xl:text-2xl font-cormorant font-semibold tracking-tighter text-justify text-darkSage leading-4.5 md:leading-6 2xl:leading-7 mb-4 md:mb-3">
+            <h1 className="text-lg lg:text-xl xl:text-2xl font-cormorant font-semibold tracking-tighter text-justify text-darkSage leading-4.5 md:leading-6 2xl:leading-7 mb-4 md:mb-3 wrap-break-word break-all">
               {forum.title}
             </h1>
 
-            <p className="font-poppins text-[9px] md:text-xs xl:text-sm mb-3 md:mb-4 text-gray-600">
+            <p className="font-poppins text-[11px] md:text-xs xl:text-sm mb-3 md:mb-4 text-gray-600 wrap-break-word break-all">
               {/* Tampilkan teks penuh kalau isExpanded true, kalau false tampilkan potongan teks */}
               {isExpanded ? forum.content : previewText}
 
@@ -237,14 +238,25 @@ const router = useRouter();
                 </span>
               )}
             </p>
+            <div className="relative group overflow-hidden rounded-xl md:rounded-3xl mb-4 cursor-pointer" 
+              onClick={() => setIsPopupOpen(true)}>
+              <div className="absolute top-3 right-3 bg-black/50 p-2 rounded-full md:hidden z-20">
+                <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8.5V4m0 0h4.5M4 4l5.5 5.5m10.5-1V4m0 0h-4.5M20 4l-5.5 5.5M4 15.5V20m0 0h4.5M4 20l5.5-5.5m10.5 1V20m0 0h-4.5m4.5 0-5.5-5.5"/></svg>
+              </div>
 
-            <div className="overflow-hidden rounded-xl md:rounded-3xl mb-4">
+              {/* OVERLAY "Klik untuk selengkapnya" */}
+              <div className="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                <p className="text-white font-jakarta italic text-[10px] sm:text-xs md:text-sm">
+                  Klik untuk selengkapnya
+                </p>
+              </div>
+
               <Image
                 src={forum.image}
                 width={600}
                 height={300}
-                className="w-full h-40 sm:h-48 md:h-56 lg:h-80 xl:h-100 2xl:h-120 object-cover rounded-xl md:rounded-3xl hover:scale-105 transition-transform duration-300"
-                alt=""
+                className="w-full h-40 sm:h-48 md:h-56 lg:h-80 xl:h-100 2xl:h-120 object-cover transform group-hover:scale-105 transition-transform duration-700"
+                alt={forum.title}
               />
             </div>
             <button
@@ -278,7 +290,7 @@ const router = useRouter();
               </h3>
             </div>
 
-            <p className="text-justify md:text-left text-xs md:text-sm text-gray-600">
+            <p className="md:text-left text-[11px] md:text-xs lg:text-sm text-gray-600 wrap-break-word break-all">
               {/* Tampilkan teks penuh kalau isExpanded true, kalau false tampilkan potongan teks */}
               {isExpanded2 ? (forum.ringkasan || forum.content) : previewRingkasan}
 
@@ -571,7 +583,7 @@ const router = useRouter();
                   Belum ada tanggapan
                 </p>
 
-                <p className="text-sm text-gray-400 mt-1">
+                <p className="text-xs md:text-sm text-gray-400 mt-1">
                   Jadilah yang pertama membagikan pikiranmu.
                 </p>
               </div>
@@ -596,7 +608,7 @@ const router = useRouter();
                         <span>{c.time}</span>
                       </div>
 
-                      <p className="text-xs md:text-sm text-gray-600">
+                      <p className="text-xs md:text-sm text-gray-600 wrap-break-word break-all">
                         {c.text}
                       </p>
                     </div>
@@ -661,7 +673,7 @@ const router = useRouter();
               </h3>
             </div>
 
-            <p className="text-justify md:text-left text-xs md:text-sm text-gray-600">
+            <p className="md:text-left text-xs md:text-sm text-gray-600 wrap-break-word break-all">
               {/* Tampilkan teks penuh kalau isExpanded true, kalau false tampilkan potongan teks */}
               {isExpanded2 ? (forum.ringkasan || forum.content) : previewRingkasan}
 
@@ -877,10 +889,11 @@ const router = useRouter();
           </div>
         </div>
       )}
+
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-22 right-9 bg-darkSage hover:bg-white text-white hover:text-darkSage w-11 h-11 rounded-full flex items-center justify-center shadow-xl transition-all duration-500"
+          className="fixed bottom-22 right-5 md:right-9 bg-darkSage hover:bg-white text-white hover:text-darkSage w-11 h-11 rounded-full flex items-center justify-center shadow-xl transition-all duration-500"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M5 15L12 8L19 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -888,6 +901,43 @@ const router = useRouter();
 
         </button>
       )}
+
+      <AnimatePresence>
+        {isPopupOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-100 flex items-center justify-center bg-black/90 p-4 md:p-10"
+            onClick={() => setIsPopupOpen(false)}
+          >
+            {/* Tombol Close */}
+            <button 
+              className="absolute top-5 right-5 md:top-10 md:right-10 text-white hover:text-selectionBlue transition-colors z-110 cursor-pointer"
+              onClick={() => setIsPopupOpen(false)}
+            >
+              <svg className="w-6 h-6 md:w-8 md:h-8" viewBox="0 0 56.326 56.326" fill="currentColor">
+                <path d="M477.613,422.087l25.6-25.6a1.5,1.5,0,0,0-2.122-2.121l-25.6,25.6-25.6-25.6a1.5,1.5,0,1,0-2.121,2.121l25.6,25.6-25.6,25.6a1.5,1.5,0,0,0,2.121,2.122l25.6-25.6,25.6,25.6a1.5,1.5,0,0,0,2.122-2.122Z" transform="translate(-447.328 -393.924)"/>
+              </svg>
+            </button>
+
+            {/* Gambar Besar */}
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="relative w-[85vw] h-[75vh] flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={forum.image} 
+                alt="Full Preview"
+                className="w-full h-full object-contain"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

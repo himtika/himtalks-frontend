@@ -110,11 +110,11 @@ export default function ChatAnonym() {
 
     return (
         <>
-            <section className="pt-34 lg:pt-44 pb-28 px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 bg-primaryBG text-[#5E6F64] selection:bg-darkSage selection:text-white overflow-x-hidden">
+            <section className="pt-34 lg:pt-44 pb-28 px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 bg-primaryBG text-[#5E6F64] selection:bg-darkSage selection:text-white">
                 <h1 className="font-playfair italic font-bold max-w-70 md:max-w-full text-4xl md:text-5xl xl:text-6xl text-darkSage mt-4 mb-4 sm:mb-2 transition-all duration-500 mx-auto text-center">
                     Speak freely, stay anonymous
                 </h1>
-                <p className="w-[80%] text-center font-cormorant font-semibold text-lg sm:text-xl text-darkSage mt-6 md:mt-8 mx-auto leading-6">
+                <p className="w-[80%] text-center font-cormorant font-semibold text-sm sm:text-lg lg:text-xl xl:text-2xl text-darkSage mt-6 md:mt-8 mx-auto sm:leading-6">
                     Kirimkan pesanmu tanpa mengungkap identitas melalui fitur Pesan Anonim
                 </p>
 
@@ -132,12 +132,12 @@ export default function ChatAnonym() {
                         width="105"
                         height="128"
                         alt="bird-illustrasion"
-                        className="absolute w-30 sm:w-50 h-50 z-10 -top-25 -right-12 sm:-top-20 sm:-right-20 transition-all duration-500"
+                        className="absolute w-30 sm:w-50 h-50 z-10 -top-25 -right-10 sm:-top-20 sm:-right-20 transition-all duration-500"
                     />
                     <AnimatePresence>
                         {submitStatus === 'success' && (
                             <motion.div 
-                                className="z-20 top-24 sticky mb-4 p-3 bg-green-200 text-green-800 rounded-md"
+                                className="z-20 top-22 sticky mb-4 p-3 bg-green-200 text-green-800 rounded-md"
                                 initial={{ opacity: 0, y: -10 }} // Mulai dari transparan dan agak ke atas
                                 animate={{ opacity: 1, y: 0 }} // Muncul dengan smooth
                                 exit={{ opacity: 0, y: -10 }} // Menghilang dengan smooth
@@ -148,7 +148,7 @@ export default function ChatAnonym() {
                         )}
                         {submitStatus === 'error' && (
                             <motion.div 
-                                className="z-20 top-24 sticky mb-4 p-3 bg-red-200 text-red-800 rounded-md"
+                                className="z-20 top-22 sticky mb-4 p-3 bg-red-200 text-red-800 rounded-md"
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}

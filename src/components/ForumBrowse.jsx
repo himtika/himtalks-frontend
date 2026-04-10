@@ -64,7 +64,7 @@ export default function ForumBrowse() {
   return (
     <section className="bg-primaryBG min-h-screen px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 py-20 pt-22 sm:pt-26 lg:pt-32">
       <Link href="/himtalks/mini-forum#latest-discussion" className="flex items-center gap-2 text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 md:mb-13 text-darkSage font-cormorant font-extrabold tracking-tight w-fit hover:-translate-x-2 transition-all duration-500">
-        <svg width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-2 h-4 md:w-3 md:h-6" width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" clipRule="evenodd" d="M9.99965 19.438L8.95465 20.5L1.28865 12.71C1.10415 12.5197 1.00098 12.2651 1.00098 12C1.00098 11.7349 1.10415 11.4803 1.28865 11.29L8.95465 3.5L9.99965 4.563L2.68165 12L9.99965 19.438Z" fill="#5F6F6C"/>
         </svg>
         <span>Return to mini forum menu</span>
@@ -109,7 +109,7 @@ export default function ForumBrowse() {
       </div>
 
       {/* SORT */}
-      <div className="mb-5 lg:mb-10 flex justify-end">
+      <div className="mb-5 lg:mb-10 flex justify-end font-playfair">
         {/* Pastikan state 'sort' awalnya adalah sortOptions[0] atau objek yang sesuai */}
         <Listbox value={sort} onChange={setSort}>
           {({ open }) => (
@@ -120,7 +120,7 @@ export default function ForumBrowse() {
                   open ? "ring-2 ring-primary/20" : ""
                 )}
               >
-                <span className="block truncate">
+                <span className="block truncate font-medium">
                   {sort ? sort.name : "Urutkan..."}
                 </span>
                 <ChevronDownIcon

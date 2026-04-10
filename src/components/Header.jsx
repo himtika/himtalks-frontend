@@ -118,7 +118,8 @@ export default function Header() {
                     {links.map((link, index) => {
                       const isActive =
                         link.path === pathname ||
-                        (link.path.startsWith("/himtalks/songfess") && pathname.startsWith(link.path));
+                        (link.path.startsWith("/himtalks/songfess") && pathname.startsWith(link.path)) ||
+                        (link.path.startsWith("/himtalks/mini-forum") && pathname.startsWith(link.path));
 
                       return (
                         <Link

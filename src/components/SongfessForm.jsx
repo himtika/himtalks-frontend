@@ -323,7 +323,7 @@ export default function SongfessForm() {
 
   return (
     <>
-      <section className="pt-22 md:pt-25 lg:pt-30 pb-28 px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 bg-primaryBG text-black transition-all duration-500 selection:bg-primary overflow-x-hidden">
+      <section className="pt-22 md:pt-25 lg:pt-30 pb-28 px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 bg-primaryBG text-black transition-all duration-500 selection:bg-primary">
         <Link href="/himtalks/songfess" className="flex items-center gap-2 text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 md:mb-15 text-darkSage font-cormorant font-extrabold tracking-tight w-fit hover:-translate-x-1 md:hover:-translate-x-2 transition-all duration-500">
             <svg className="w-2 h-4 md:w-3 md:h-6" width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M9.99965 19.438L8.95465 20.5L1.28865 12.71C1.10415 12.5197 1.00098 12.2651 1.00098 12C1.00098 11.7349 1.10415 11.4803 1.28865 11.29L8.95465 3.5L9.99965 4.563L2.68165 12L9.99965 19.438Z" fill="#5F6F6C"/>
@@ -351,12 +351,12 @@ export default function SongfessForm() {
               width="105"
               height="128"
               alt="bird-illustrasion"
-              className="absolute w-30 sm:w-50 h-50 z-10 -top-25 -right-12 sm:-top-21 sm:-right-20 transition-all duration-500"
+              className="absolute w-30 sm:w-50 h-50 z-10 -top-25 -right-10 sm:-top-21 sm:-right-20 transition-all duration-500"
           />
           <AnimatePresence>
             {submitStatus === "success" && (
               <motion.div
-                className="z-20 top-24 sticky mb-4 p-3 bg-green-200 text-green-800 rounded-md"
+                className="sticky top-22 z-50 mb-4 p-3 bg-green-200 text-green-800 rounded-md"
                 initial={{ opacity: 0, y: -10 }} // Mulai dari transparan dan agak ke atas
                 animate={{ opacity: 1, y: 0 }} // Muncul dengan smooth
                 exit={{ opacity: 0, y: -10 }} // Menghilang dengan smooth
@@ -367,7 +367,7 @@ export default function SongfessForm() {
             )}
             {submitStatus === "error" && (
               <motion.div
-                className="z-20 top-24 sticky mb-4 p-3 bg-red-200 text-red-800 rounded-md"
+                className="sticky top-22 z-50 mb-4 p-3 bg-red-200 text-red-800 rounded-md"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -403,6 +403,7 @@ export default function SongfessForm() {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  maxLength={35}
                   className="w-full mt-1 font-medium text-xs sm:text-sm text-textMain rounded-md bg-white p-2 sm:p-[11px] focus:outline-none focus:bg-white focus:placeholder-white placeholder:text-textMain/50 placeholder:italic hover:placeholder-textMain/90 selection:bg-textMain selection:text-white"
                 />
               </div>
@@ -657,6 +658,7 @@ export default function SongfessForm() {
                   onChange={handleMessageChange}
                   placeholder="Type your message ..."
                   required
+                  maxLength={150}
                   className="w-full mt-1 font-medium text-xs sm:text-sm text-textMain rounded-md bg-white p-2 sm:p-[11px] border-white focus:outline-none focus:bg-white focus:placeholder-white placeholder:text-textMain/50 placeholder:italic hover:placeholder-textMain/90 selection:bg-textMain selection:text-white resize-none overflow-hidden"
                 />
               </div>

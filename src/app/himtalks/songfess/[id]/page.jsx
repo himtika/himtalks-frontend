@@ -175,67 +175,12 @@ export default function SongfessDetailPage() {
                       : "hover:scale-105 scale-100"}`} >
           
           <div className="max-w-[547px] mx-auto text-center text-darkSage">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-none font-playfair font-normal italic">
-              Hello, <span className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight block md:inline">{songfess.recipient_name || "Anonymous"}</span>
+            <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl leading-none font-playfair font-normal italic">
+              Hello, <span className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight block md:inline leading-none wrap-break-word break-all">{songfess.recipient_name || "Anonymous"}</span>
             </h1>
             <p className="font-poppins w-[80%] mx-auto text-[10px] sm:text-xs md:text-sm xl:text-base font-medium mt-4 sm:mt-6 md:mt-8">
               There's someone sending you a song, they want you to hear this song that maybe you'll like :)
             </p>
-            {/* <div className="rounded-lg bg-[#F5E8FF] max-w-96 mx-auto p-3 mt-7 md:mt-9">
-                <div className="w-full flex items-start gap-4">
-                  <div>
-                    <Image
-                        src={songfess.image}
-                        width={128}
-                        height={128}
-                        alt="Song Image"
-                        draggable={false}
-                        className="rounded-md max-w-[80px] max-h-[80px] md:max-w-[120px] md:max-h-[120px]"
-                    />
-                  </div>
-
-                  <div className="">
-                    <h3 className="mb-2 font-[Plus Jakarta Sans] font-semibold text-darkPurple text-lg md:text-2xl tracking-tight text-left">{songfess.songTitle}</h3>
-                    <div className="mb-2 flex flex-col-reverse items-start sm:flex sm:flex-row sm:items-end gap-2">
-                      <p className="rounded-sm bg-darkPurple text-white text-xs max-w-16 font-light tracking-tight px-2 py-[1px] cursor-default">Preview</p>
-                      <p className="font-[Plus Jakarta Sans] text-sm font-medium tracking-tight -mb-1 sm:mb-0">{songfess.artist}</p>
-                    </div>
-                    <Link href="#" className="flex gap-2">
-                      <Image
-                        src="/icons/add-plus.svg"
-                        width={17}
-                        height={17}
-                        alt="Add"
-                        draggable={false}
-                      />
-                      <p className="font-medium text-sm tracking-tight text-darkPurple hover:underline">Save on spotify</p>
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="w-full mt-2 flex justify-end items-center gap-3">
-                  <div className="relative hover:bg-white w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500">
-                    <Image
-                      src="/icons/more-option.svg"
-                      width={19}
-                      height={4}
-                      alt="Add"
-                      draggable={false}
-                      className="absolute right-[6px]"
-                    />
-                  </div>
-                  <div className="relative bg-white w-8 h-8 rounded-full flex items-center justify-center">
-                    <Image
-                      src="/icons/pause.svg"
-                      width={11}
-                      height={15}
-                      alt="Add"
-                      draggable={false}
-                      className="absolute right-[9px]"
-                    />
-                  </div>
-                </div>
-            </div> */}
             {/* Hanya tampilkan iframe jika song_id ada dan tidak kosong */}
             {songfess.song_id && (
               <div className="flex justify-center mt-7 lg:mt-10">
@@ -250,7 +195,7 @@ export default function SongfessDetailPage() {
               </div>
             )}
             <p className="text-[10px] md:text-xs lg:text-sm xl:text-base font-poppins font-medium leading-5 mt-6 md:mt-8 lg:mt-10">Also, here's a message from the sender:</p>
-            <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold mt-4 md:mt-6 lg:mt-8 leading-5 lg:leading-7 xl:leading-8.5 font-cormorant tracking-tight italic wrap-break-word">"{songfess.content || "No message"}"</p>
+            <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold mt-4 md:mt-6 lg:mt-8 leading-5 lg:leading-7 xl:leading-8.5 font-cormorant tracking-tight italic wrap-break-word break-all">"{songfess.content || "No message"}"</p>
             <p className="text-[10px] md:text-xs lg:text-sm xl:text-base font-poppins font-medium leading-5 mt-4 md:mt-7">
               Sent by {songfess.sender_name || "Anonymous"} on {new Date(songfess.created_at).toLocaleDateString()}
             </p>
@@ -286,7 +231,7 @@ export default function SongfessDetailPage() {
                 ref={modalRef}
                 className={`relative bg-white w-[92%] sm:w-full sm:max-w-[849px] py-6 px-5 sm:py-9 lg:py-13 lg:px-10 rounded-xl shadow-md text-center mx-auto transition-all duration-1000`} >
                   <div className="max-w-[547px] mx-auto overflow-visible">
-                    <Dialog.Title className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-none font-playfair font-normal italic">
+                    <Dialog.Title className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-none font-playfair font-normal italic">
                         Hello, <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight block md:inline">{songfess.recipient_name || "Anonymous"}</span>
                     </Dialog.Title>
                     <p className="max-w-[80%] md:max-w-full mx-auto font-poppins text-[10px] sm:text-xs md:text-sm lg:text-base font-medium mt-4 sm:mt-6 md:mt-8">
