@@ -61,7 +61,7 @@ export default function ForumCard({ forum }) {
 
   return (
     <div
-      onClick={() => router.push(`/himtalks/mini-forum/${slug}#comment`)}
+      onClick={() => router.push(`/himtalks/mini-forum/${slug}`)}
       className="bg-white rounded-2xl shadow-lg p-3.5 md:p-5 relative border border-gray-100 hover:-translate-y-2 transition duration-300 cursor-pointer selection:bg-darkSage selection:text-white"
     >
       {/* CLOSED */}

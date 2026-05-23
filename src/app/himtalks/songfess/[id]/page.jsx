@@ -43,35 +43,6 @@ export default function SongfessDetailPage() {
       fetchSongfessData();
     }, []);
 
-  // const downloadImage = async () => {
-  //   if (modalRef.current){
-  //     const canvas = await html2canvas(modalRef.current, { useCORS: true, scale: 2 });
-  //     const imgData = canvas.toDataURL("image/png");
-
-  //     const link = document.createElement("a");
-  //     link.href = imgData;
-
-  //     const songfessItem = songfessList.find((item) => item.id.toString() === id);
-  //     const fileName = `${songfessItem ? songfessItem.recipient_name + "-songfess-card" : "songfess-card"}.png`;
-  //     link.download = fileName;
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     document.body.removeChild(link);
-  //   }
-  // };
-
-  // const downloadImage = async () => {
-  //   if (modalRef.current) {
-  //     const dataUrl = await toPng(modalRef.current, { cacheBust: true, pixelRatio: 2 });
-  //     const link = document.createElement("a");
-  //     const songfessItem = songfessList.find((item) => item.id.toString() === id);
-  //     const fileName = `${songfessItem ? songfessItem.recipient_name + "-songfess-card" : "songfess-card"}.png`;
-  //     link.download = fileName;
-  //     link.href = dataUrl;
-  //     link.click();
-  //   }
-  // };
-
   const downloadImage = async () => {
     if (modalRef.current) {
       try {
@@ -95,16 +66,40 @@ export default function SongfessDetailPage() {
           }
         });
 
-        // 2. Eksekusi Download
-        const link = document.createElement("a");
-        const songfessItem = songfessList.find((item) => item.id.toString() === id);
-        const fileName = `${songfessItem ? songfessItem.sender_name : "songfess"}-card.png`;
-        
-        link.download = fileName;
-        link.href = dataUrl;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+
+        if (isMobile) {
+          // Trik HP: Buka gambar di tab baru / window baru
+          const newWindow = window.open();
+          if (newWindow) {
+            newWindow.document.write(
+              `<p style="text-align:center; font-family:sans-serif; color:#666; margin-top:20px;">
+                Tekan lama pada gambar di bawah ini, lalu pilih <b>"Simpan Gambar"</b> atau <b>"Add to Photos"</b>
+              </p>
+              <div style="text-align:center; margin-top:20px;">
+                <img src="${dataUrl}" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);" />
+              </div>`
+            );
+            newWindow.document.title = "Simpan Gambar Songfess";
+            newWindow.document.close();
+          } else {
+            // Jika tab baru diblokir oleh pop-up blocker HP, arahkan tab saat ini ke gambar tersebut
+            window.location.href = dataUrl;
+          }
+        } else {
+          // 2. Eksekusi Download
+          const link = document.createElement("a");
+          const songfessItem = songfessList.find((item) => item.id.toString() === id);
+          const fileName = `${songfessItem ? songfessItem.sender_name : "songfess"}-card's.png`;
+          
+          link.download = fileName;
+          link.href = dataUrl;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
 
       } catch (err) {
         console.error("Gagal download gambar:", err);
@@ -238,16 +233,18 @@ export default function SongfessDetailPage() {
                         There's someone sending you a song, they want you to hear this song
                         that maybe you'll like :)
                     </p>
-                    <div className="rounded-lg bg-primary/50 max-w-96 md:max-w-lg mx-auto p-3 mt-7 md:mt-9">
+                    <div key={`album-art-container-${id}`} className="rounded-lg bg-primary/50 max-w-96 md:max-w-lg mx-auto p-3 mt-7 md:mt-9">
                       {/* Container Utama Detail Lagu */}
                       <div className="w-full flex items-start gap-4">
                         {/* BAGIAN 1: Image Song - Pakai flex-shrink-0 supaya tidak terhimpit */}
                         <div className="shrink-0">
-                          <Image
-                            src={songfess.album_art || "/songfess/image-default-spotify.png"}
+                          <img
+                            // src={songfess.album_art || "/songfess/image-default-spotify.png"}
+                            src={`${songfess.album_art || "/songfess/image-default-spotify.png"}?t=${new Date().getTime()}`}
                             width={128}
                             height={128}
                             alt="Song Image"
+                            crossOrigin="anonymous"
                             draggable={false}
                             className="rounded-md w-28 h-28 md:w-36 md:h-36 object-cover"
                           />

@@ -309,14 +309,14 @@ export default function SongfessForm() {
         setSongs([]);
         setQuery("");
         setSubmitStatus("success");
-        setTimeout(() => setSubmitStatus(null), 5000);setTimeout(() => {
+        setTimeout(() => setSubmitStatus(null), 3000);setTimeout(() => {
           router.push("/himtalks/songfess/browse-songfess");
-        }, 5500);
+        }, 3500);
       }
     } catch (error) {
       console.error("Error submitting songfess:", error);
       setSubmitStatus("error");
-      setTimeout(() => setSubmitStatus(null), 5000);
+      setTimeout(() => setSubmitStatus(null), 3000);
     }
     setIsSubmitting(false);
   }

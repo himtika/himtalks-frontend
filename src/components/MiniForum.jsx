@@ -203,7 +203,7 @@ export default function MiniForum() {
               onClick={(e) => {
                 e.stopPropagation();
                 const slug = `${latest.id}-${slugify(latest.title)}`;
-                router.push(`/himtalks/mini-forum/${slug}#comment`);
+                router.push(`/himtalks/mini-forum/${slug}`);
               }}
               // onClick={() => {
               //   const slug = `${latest.id}-${slugify(latest.title)}`;

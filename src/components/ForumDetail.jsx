@@ -58,11 +58,11 @@ const router = useRouter();
   // LOGIC SORTING KOMENTAR
   const sortedComments = [...comments].sort((a, b) => {
     // Asumsi: a.id atau a.time bisa dikonversi ke date. 
-    // Karena di dummy data kamu pake "1 jam lalu", lebih aman urutkan berdasarkan ID (karena ID i++ di loop)
+    // Karena di dummy, data pake "1 jam lalu", lebih aman urutkan berdasarkan ID (karena ID i++ di loop)
     if (commentSort.value === "newest") {
-      return a.id - b.id; // ID lebih kecil = lebih lama
-    } else {
       return b.id - a.id; // ID lebih besar = lebih baru
+    } else {
+      return a.id - b.id; // ID lebih kecil = lebih lama
     }
   });
 
