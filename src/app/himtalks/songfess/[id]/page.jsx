@@ -14,6 +14,7 @@ export default function SongfessDetailPage() {
   const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
+  const [mobileImageUrl, setMobileImageUrl] = useState(null);
   const timeoutRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -43,67 +44,116 @@ export default function SongfessDetailPage() {
       fetchSongfessData();
     }, []);
 
-  const downloadImage = async () => {
-    if (modalRef.current) {
-      try {
-        // 1. Ambil ukuran asli elemen
-        const width = modalRef.current.offsetWidth;
-        const height = modalRef.current.offsetHeight;
+  // const downloadImage = async () => {
+  //   if (modalRef.current) {
+  //     try {
+  //       // 1. Ambil ukuran asli elemen
+  //       const width = modalRef.current.offsetWidth;
+  //       const height = modalRef.current.offsetHeight;
 
-        // 2. Render dengan opsi tambahan
-        const dataUrl = await toPng(modalRef.current, {
-          cacheBust: true,
-          pixelRatio: 2,
-          backgroundColor: '#ffffff',
-          // Paksa lebar dan tinggi sesuai elemen asli
-          width: width,
-          height: height,
-          style: {
-            transform: 'scale(1)', // Reset transform biar nggak miring
-            left: '0',
-            top: '0',
-            margin: '0', // Hapus mx-auto pas lagi dipotret
-          }
-        });
+  //       // 2. Render dengan opsi tambahan
+  //       const dataUrl = await toPng(modalRef.current, {
+  //         cacheBust: true,
+  //         pixelRatio: 2,
+  //         backgroundColor: '#ffffff',
+  //         // Paksa lebar dan tinggi sesuai elemen asli
+  //         width: width,
+  //         height: height,
+  //         style: {
+  //           transform: 'scale(1)', // Reset transform biar nggak miring
+  //           left: '0',
+  //           top: '0',
+  //           margin: '0', // Hapus mx-auto pas lagi dipotret
+  //         }
+  //       });
 
-        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        );
+  //       const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  //         navigator.userAgent
+  //       );
 
-        if (isMobile) {
-          // Trik HP: Buka gambar di tab baru / window baru
-          const newWindow = window.open();
-          if (newWindow) {
-            newWindow.document.write(
-              `<p style="text-align:center; font-family:sans-serif; color:#666; margin-top:20px;">
-                Tekan lama pada gambar di bawah ini, lalu pilih <b>"Simpan Gambar"</b> atau <b>"Add to Photos"</b>
-              </p>
-              <div style="text-align:center; margin-top:20px;">
-                <img src="${dataUrl}" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);" />
-              </div>`
-            );
-            newWindow.document.title = "Simpan Gambar Songfess";
-            newWindow.document.close();
-          } else {
-            // Jika tab baru diblokir oleh pop-up blocker HP, arahkan tab saat ini ke gambar tersebut
-            window.location.href = dataUrl;
-          }
-        } else {
-          // 2. Eksekusi Download
-          const link = document.createElement("a");
-          const songfessItem = songfessList.find((item) => item.id.toString() === id);
-          const fileName = `${songfessItem ? songfessItem.sender_name : "songfess"}-card's.png`;
+  //       if (isMobile) {
+  //         // Trik HP: Buka gambar di tab baru / window baru
+  //         const newWindow = window.open();
+  //         if (newWindow) {
+  //           newWindow.document.write(
+  //             `<p style="text-align:center; font-family:sans-serif; color:#666; margin-top:20px;">
+  //               Tekan lama pada gambar di bawah ini, lalu pilih <b>"Simpan Gambar"</b> atau <b>"Add to Photos"</b>
+  //             </p>
+  //             <div style="text-align:center; margin-top:20px;">
+  //               <img src="${dataUrl}" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);" />
+  //             </div>`
+  //           );
+  //           newWindow.document.title = "Simpan Gambar Songfess";
+  //           newWindow.document.close();
+  //         } else {
+  //           // Jika tab baru diblokir oleh pop-up blocker HP, arahkan tab saat ini ke gambar tersebut
+  //           window.location.href = dataUrl;
+  //         }
+  //       } else {
+  //         // 2. Eksekusi Download
+  //         const link = document.createElement("a");
+  //         const songfessItem = songfessList.find((item) => item.id.toString() === id);
+  //         const fileName = `${songfessItem ? songfessItem.sender_name : "songfess"}-card's.png`;
           
-          link.download = fileName;
-          link.href = dataUrl;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
+  //         link.download = fileName;
+  //         link.href = dataUrl;
+  //         document.body.appendChild(link);
+  //         link.click();
+  //         document.body.removeChild(link);
+  //       }
 
-      } catch (err) {
-        console.error("Gagal download gambar:", err);
+  //     } catch (err) {
+  //       console.error("Gagal download gambar:", err);
+  //     }
+  //   }
+  // };
+
+  const downloadImage = async () => {
+    if (!modalRef.current) return;
+
+    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+
+    try {
+      const width = modalRef.current.offsetWidth;
+      const height = modalRef.current.offsetHeight;
+
+      const dataUrl = await toPng(modalRef.current, {
+        cacheBust: true,
+        imagePlaceholder: "/songfess/image-default-spotify.png", 
+        preferredFontFormat: 'woff2',
+        pixelRatio: isMobile ? 2 : 2, // 1.2 saja di HP agar proses render instan dan ringan
+        backgroundColor: '#ffffff',
+        width: width,
+        height: height,
+        style: {
+          transform: 'scale(1)',
+          left: '0',
+          top: '0',
+          margin: '0',
+        }
+      });
+
+      if (isMobile) {
+        // Jika di HP, simpan data gambarnya ke state untuk dimunculkan di layar
+        setMobileImageUrl(dataUrl);
+      } else {
+        // Jika di PC, langsung download otomatis seperti biasa
+        const link = document.createElement("a");
+        const songfessItem = songfessList.find((item) => item.id.toString() === id);
+        const fileName = `${songfessItem ? songfessItem.sender_name : "songfess"}-card.png`;
+        
+        link.download = fileName;
+        link.href = dataUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
+
+    } catch (err) {
+      console.error("Gagal memproses gambar:", err);
+      alert("Waduh, gagal memproses gambar. Silakan coba gunakan screenshot manual.");
     }
   };
 
@@ -320,6 +370,33 @@ export default function SongfessDetailPage() {
           </div>
         </Dialog>
       </Transition>
+
+      {/* MODAL PREVIEW KHUSUS HP (ANTI POP-UP BLOCKER) */}
+      {mobileImageUrl && (
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/90 p-4 animate-fade-in">
+          <div className="relative bg-white p-4 rounded-2xl max-w-sm w-full shadow-2xl text-center">
+            
+            <p className="text-xs md:text-sm font-poppins text-darkSage font-medium mb-3 px-2">
+              📸 <b>Sentuh dan Tahan</b> pada gambar di bawah, lalu pilih <b>"Simpan Gambar"</b> atau <b>"Download Gambar"</b> untuk menyimpannya ke galeri HP kamu.
+            </p>
+
+            <div className="overflow-hidden rounded-xl border border-gray-100 max-h-[60vh] flex items-center justify-center bg-gray-50">
+              <img 
+                src={mobileImageUrl} 
+                alt="Songfess Card Preview" 
+                className="max-w-full max-h-[58vh] object-contain"
+              />
+            </div>
+
+            <button
+              onClick={() => setMobileImageUrl(null)}
+              className="mt-4 w-full bg-primary hover:bg-darkSage text-white font-poppins text-xs md:text-sm py-2.5 rounded-xl transition-all font-semibold"
+            >
+              Tutup Pratinjau
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
