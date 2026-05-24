@@ -98,6 +98,15 @@ const router = useRouter();
       behavior: "smooth",
     });
   };
+
+  // Memaksa halaman detail SELALU lompat ke posisi paling atas setiap kali forum baru dibuka
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [forumId]);
+
   useEffect(() => {
     async function fetchData() {
       if (!forumId) return;

@@ -108,6 +108,14 @@ export default function SongfessDetailPage() {
   //   }
   // };
 
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
   const downloadImage = async () => {
     if (!modalRef.current) return;
 
@@ -122,8 +130,7 @@ export default function SongfessDetailPage() {
       const dataUrl = await toPng(modalRef.current, {
         cacheBust: true,
         imagePlaceholder: "/songfess/image-default-spotify.png", 
-        preferredFontFormat: 'woff2',
-        pixelRatio: isMobile ? 2 : 2, // 1.2 saja di HP agar proses render instan dan ringan
+        pixelRatio: 2,
         backgroundColor: '#ffffff',
         width: width,
         height: height,
@@ -149,6 +156,7 @@ export default function SongfessDetailPage() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        closeModal();
       }
 
     } catch (err) {
@@ -170,13 +178,7 @@ export default function SongfessDetailPage() {
     }, 700);
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
+  
 
   if (loading) {
     return <h1 className="text-2xl mt-10">Loading...</h1>;
@@ -274,7 +276,7 @@ export default function SongfessDetailPage() {
               >
               <Dialog.Panel
                 ref={modalRef}
-                className={`relative bg-white w-[92%] sm:w-full sm:max-w-[849px] py-6 px-5 sm:py-9 lg:py-13 lg:px-10 rounded-xl shadow-md text-center mx-auto transition-all duration-1000`} >
+                className={`relative bg-white w-[92%] sm:w-full sm:max-w-[849px] py-6 px-7 sm:py-9 lg:py-13 lg:px-10 rounded-xl shadow-md text-center mx-auto transition-all duration-1000`} >
                   <div className="max-w-[547px] mx-auto overflow-visible">
                     <Dialog.Title className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-none font-playfair font-normal italic">
                         Hello, <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight block md:inline">{songfess.recipient_name || "Anonymous"}</span>
@@ -346,26 +348,26 @@ export default function SongfessDetailPage() {
                         </div>
                       </div>
                     </div>
-                    <p className="text-xs md:text-sm lg:text-base font-poppins font-medium leading-5 mt-6 md:mt-8">
+                    <p className="text-[10px] sm:text-xs md:text-sm lg:text-base font-poppins font-medium leading-5 mt-6 md:mt-8">
                       Also, here's a message from the sender:
                     </p>
                     <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold mt-4 sm:mt-6 md:mt-8 font-cormorant text-purple tracking-tight italic leading-5 lg:leading-7 xl:leading-8.5 wrap-break-word">"{songfess.content || "No message"}"</p>
-                    <p className="text-xs md:text-sm lg:text-base font-poppins font-medium leading-5 mt-4 md:mt-7">Sent by {songfess.sender_name || "Anonymous"} on {new Date(songfess.created_at).toLocaleDateString()}</p>
+                    <p className="text-[10px] sm:text-xs md:text-sm lg:text-base font-poppins font-medium leading-5 mt-4 md:mt-7">Sent by {songfess.sender_name || "Anonymous"} on {new Date(songfess.created_at).toLocaleDateString()}</p>
                   </div>
+                  {/* Tombol Download (diluar Dialog.Panel agar tidak ikut tertangkap) */}
+                  <button
+                    onClick={downloadImage}
+                    className="absolute -top-15 left-0 md:top-0 md:-left-40 bg-blue-500 text-white p-2 rounded-md shadow-md hover:bg-blue-700 transition-all z-100"
+                  >
+                    Download as PNG
+                  </button>
+                  <button onClick={closeModal} className="bg-primary rounded-md p-2 text-white absolute -top-15 right-0 md:top-0 md:-right-15 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 fill-current">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                  </button>
               </Dialog.Panel>
               </Transition.Child>
-              {/* Tombol Download (diluar Dialog.Panel agar tidak ikut tertangkap) */}
-              <button
-                onClick={downloadImage}
-                className="absolute top-5 left-5 bg-blue-500 text-white p-2 rounded-md shadow-md hover:bg-blue-700 transition-all z-100"
-              >
-                Download as PNG
-              </button>
-              <button onClick={closeModal} className="bg-purple rounded-md p-2 text-white absolute top-5 right-5">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 fill-current">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-              </button>
             </div>
           </div>
         </Dialog>
