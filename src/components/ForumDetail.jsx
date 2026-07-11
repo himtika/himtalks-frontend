@@ -254,7 +254,7 @@ export default function ForumDetail({ forumId }) {
               {forum.title}
             </h1>
 
-            <p className="font-poppins text-[11px] md:text-xs xl:text-sm mb-3 md:mb-4 text-gray-600 wrap-break-word break-all">
+            <p className="font-poppins text-[11px] md:text-xs xl:text-sm mb-3 md:mb-4 text-gray-600 text-justify">
               {/* Tampilkan teks penuh kalau isExpanded true, kalau false tampilkan potongan teks */}
               {isExpanded ? forum.content : previewText}
 
@@ -320,7 +320,7 @@ export default function ForumDetail({ forumId }) {
               </h3>
             </div>
 
-            <p className="md:text-left text-[11px] md:text-xs lg:text-sm text-gray-600 wrap-break-word break-all">
+            <p className="md:text-left text-[11px] md:text-xs lg:text-sm text-gray-600 text-justify">
               {/* Tampilkan teks penuh kalau isExpanded true, kalau false tampilkan potongan teks */}
               {isExpanded2 ? (forum.ringkasan || forum.content) : previewRingkasan}
 
@@ -710,7 +710,7 @@ export default function ForumDetail({ forumId }) {
               </h3>
             </div>
 
-            <p className="md:text-left text-xs md:text-sm text-gray-600 wrap-break-word break-all">
+            <p className="text-xs md:text-sm text-gray-600 text-justify">
               {/* Tampilkan teks penuh kalau isExpanded true, kalau false tampilkan potongan teks */}
               {isExpanded2 ? (forum.ringkasan || forum.content) : previewRingkasan}
 

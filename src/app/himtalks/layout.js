@@ -8,9 +8,9 @@ import { Cormorant_Garamond, Poppins, Playfair_Display } from "next/font/google"
 
 export const metadata = {
     title: "HIMTALKS ー HIMTIKA ー Himpunan Mahasiswa Informatika UNSIKA",
-    description: "HIMTIKA Talks",
+    description: "HIMTIKA Talks, platform yang bertujuan menjadi penghubung dan sarana komunikasi antara pengurus Himtika dengan anggota maupun mahasiswa Informatika Unsika lainnya. Himtalks menyediakan fasilitas menyampaikan kritik dan saran yang membangun, serta memungkinkan pengiriman pesan anonim.",
     icons: {
-        icon: "/logo/himtalks-logo.webp",
+        icon: "/favicon.ico",
     },
 };
 
