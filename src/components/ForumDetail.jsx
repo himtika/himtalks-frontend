@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
@@ -27,8 +26,6 @@ function timeAgo(date) {
 }
 
 export default function ForumDetail({ forumId }) {
-const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [open, setOpen] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -38,14 +35,15 @@ const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false); // untuk state lihat selengkapnya
   const [isExpanded2, setIsExpanded2] = useState(false); // untuk state lihat selengkapnya
 
-  const [username, setUsername] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
-  const [commentText, setCommentText] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [alertPopup, setAlertPopup] = useState({ isOpen: false, message: "", icon: "" });
   const [avatar, setAvatar] = useState(null);
   const [tempAvatar, setTempAvatar] = useState(null);
   const [showAvatarModal, setShowAvatarModal] = useState(false);
+  const [username, setUsername] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const textareaRef = useRef(null);
+  const [commentText, setCommentText] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [showScrollTop, setShowScrollTop] = useState(false);
   const commentSortOptions = [
@@ -70,6 +68,15 @@ const router = useRouter();
     { length: 14 },
     (_, i) => `/avatar/${i + 1}.png`
   );
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      // Reset tinggi ke awal dulu agar saat teks dihapus, textarea bisa mengecil kembali
+      textareaRef.current.style.height = "auto";
+      // Set tinggi sesuai dengan tinggi konten di dalamnya
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [commentText]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -145,8 +152,22 @@ const router = useRouter();
   }, [forumId]);
 
   const handleStartTyping = () => {
-    if (!avatar) return alert("Pilih avatar dulu ya!");
-    if (username.trim() === "") return alert("Masukkan username dulu!");
+    if (!avatar) {
+      setAlertPopup({
+        isOpen: true,
+        message: "Pilih avatar kerenmu dulu yaa sebelum lanjut",
+        icon: "🎨" // Kamu bisa ganti pakai SVG icon jika mau
+      });
+      return;
+    }
+    if (username.trim() === "") {
+      setAlertPopup({
+        isOpen: true,
+        message: "Eits, jangan lupa isi username atau nama anonimmu dulu yaa",
+        icon: "✍️"
+      });
+      return;
+    }
     setIsTyping(true);
   };
 
@@ -498,12 +519,19 @@ const router = useRouter();
                 </div>
 
                 {/* TEXTAREA STYLE INLINE */}
-                <input
-                  value={commentText}
-                  onChange={(e) => setCommentText(e.target.value)}
-                  placeholder="Masukkan Pendapatmu..."
-                  className="flex-1 border-b pb-1 outline-none text-[11px] sm:text-xs md:text-sm"
-                />
+                <div className="flex-1 flex flex-col gap-2.5 min-w-0">
+                  <span className="text-[10px] md:text-xs font-semibold text-darkSage truncate">
+                    {username}
+                  </span>
+                  <textarea
+                    ref={textareaRef}
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
+                    placeholder="Masukkan Pendapatmu..."
+                    rows="1"
+                    className="flex-1 border-b pb-1 outline-none text-[11px] sm:text-xs md:text-sm resize-none"
+                  />
+                </div>
 
                 {/* SEND BUTTON */}
                 <button
@@ -851,6 +879,35 @@ const router = useRouter();
 
         </div>
       </div>
+
+      {/* POPUP ALERT CUSTOM */}
+      {alertPopup.isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl text-center border border-gray-100 flex flex-col items-center gap-4 transform scale-100 transition-all">
+            
+            {/* Container Icon/Emot */}
+            <div className="w-16 h-16 bg-softLeaf/20 text-darkSage rounded-full flex items-center justify-center text-3xl shadow-sm">
+              {alertPopup.icon}
+            </div>
+
+            {/* Konten Pesan */}
+            <div className="space-y-1">
+              <h4 className="font-poppins font-bold text-gray-800 text-base">Tunggu dulu!</h4>
+              <p className="font-poppins text-xs md:text-sm text-gray-500 leading-relaxed">
+                {alertPopup.message}
+              </p>
+            </div>
+
+            {/* Tombol Aksi */}
+            <button
+              onClick={() => setAlertPopup({ ...alertPopup, isOpen: false })}
+              className="w-full mt-2 py-2.5 bg-darkSage hover:bg-primary text-white font-poppins font-medium text-xs md:text-sm rounded-xl transition duration-200 shadow-md shadow-darkSage/20"
+            >
+              Oke, Mengerti
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* MODAL */}
       {showAvatarModal && (
