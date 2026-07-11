@@ -5,7 +5,6 @@ import OurFitur from "@/components/OurFitur";
 export default function Home() {
   return (
     <>
-    
       <Hero />
       <AboutUs />
       <OurFitur />
