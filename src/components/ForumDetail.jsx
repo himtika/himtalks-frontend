@@ -223,7 +223,7 @@ export default function ForumDetail({ forumId }) {
   const isRingkasanLong = contentToUse?.length > 120;
 
   return (
-    <section className="bg-primaryBG mt-9 md:mt-12 lg:mt-16 min-h-screen px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 py-16">
+    <section className="bg-primaryBG mt-9 md:mt-12 lg:mt-16 min-h-screen px-6 sm:px-16 lg:px-20 xl:px-23 2xl:px-28 py-16 selection:bg-primary selection:text-white">
       <Link href="/himtalks/mini-forum" className="flex items-center gap-2 text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 md:mb-8 text-darkSage font-cormorant font-extrabold tracking-tight w-fit hover:-translate-x-2 transition-all duration-500">
         <svg className="w-2 h-4 md:w-3 md:h-6" width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" clipRule="evenodd" d="M9.99965 19.438L8.95465 20.5L1.28865 12.71C1.10415 12.5197 1.00098 12.2651 1.00098 12C1.00098 11.7349 1.10415 11.4803 1.28865 11.29L8.95465 3.5L9.99965 4.563L2.68165 12L9.99965 19.438Z" fill="#5F6F6C"/>
