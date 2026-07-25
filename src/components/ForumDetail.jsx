@@ -250,7 +250,7 @@ export default function ForumDetail({ forumId }) {
               </div>
             </div>
 
-            <h1 className="text-lg lg:text-xl xl:text-2xl font-cormorant font-semibold tracking-tighter text-justify text-darkSage leading-4.5 md:leading-6 2xl:leading-7 mb-4 md:mb-3 wrap-break-word break-all">
+            <h1 className="text-lg lg:text-xl xl:text-2xl font-cormorant font-semibold tracking-tighter text-justify text-darkSage leading-4.5 md:leading-6 2xl:leading-7 mb-4 md:mb-3">
               {forum.title}
             </h1>
 
@@ -636,7 +636,7 @@ export default function ForumDetail({ forumId }) {
                       alt=""
                     />
 
-                    <div className="flex flex-col gap-1 md:gap-2">
+                    <div className="flex flex-col gap-1.5 md:gap-2">
                       <div className="flex gap-1 md:gap-2 text-[10px] sm:text-xs md:text-sm text-gray-500">
                         <span className="font-medium text-black">
                           {c.user}
@@ -645,7 +645,7 @@ export default function ForumDetail({ forumId }) {
                         <span>{c.time}</span>
                       </div>
 
-                      <p className="text-xs md:text-sm text-gray-600 wrap-break-word break-all">
+                      <p className="text-[11px] sm:text-xs md:text-sm text-gray-600">
                         {c.text}
                       </p>
                     </div>
