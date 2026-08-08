@@ -36,9 +36,6 @@ export default function RootLayout({ children }) {
   return (
     <>
       <html lang="id" className={`${playfair.variable} ${cormorant.variable} ${poppins.variable}`}>
-        <head>
-          <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-        </head>
         <body className={`flex flex-col min-h-screen bg-[var(--background)] text-[var(--foreground)]`}>
             <Header />
             <StairTransition />

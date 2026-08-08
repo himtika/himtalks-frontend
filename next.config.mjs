@@ -16,6 +16,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api-backend/:path*',
+        destination: 'http://103.xxx.xxx.xxx:8080/:path*', // Ganti dengan IP & port backend Fajar
+      },
+    ]
+  },
 };
 
 export default nextConfig;
