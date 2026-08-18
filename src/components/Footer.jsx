@@ -30,7 +30,7 @@ export default function Footer() {
                 <div className="flex items-center justify-between mb-5">
                   {/* <!-- Instagram --> */}
                   <Link
-                    href="https://www.instagram.com/himtalks_?igsh=MW5tYm1iNG9udDB3dA=="
+                    href="https://www.instagram.com/himtika_unsika"
                     target="_blank"
                     className="w-10 h-10 mr-3 rounded-full flex justify-center items-center bg-white/20 text-white hover:bg-white hover:text-primary hover:border-none"
                   >
@@ -46,28 +46,9 @@ export default function Footer() {
                     </svg>
                   </Link>
 
-                  {/* <!-- Twitter/X --> */}
-                  <Link
-                                    href="https://twitter.com"
-                                    target="_blank"
-                                    className="w-10 h-10 mr-3 rounded-full flex justify-center items-center bg-white/20 text-white hover:bg-white hover:text-primary"
-                                    >
-                                    <svg 
-                                        role="img"
-                                        width="20"
-                                        className="fill-current" 
-                                        viewBox="0 0 24 24"  
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                    >
-                                        <title>X HIMTIKA</title>
-                                        <path d="M18.3265 1.90405H21.7L14.33 10.3276L23 21.7901H16.2115L10.894 14.8381L4.81 21.7901H1.4345L9.3175 12.7801L1 1.90405H7.961L12.7675 8.25855L18.3265 1.90405ZM17.1425 19.7701H19.0115L6.9455 3.81705H4.9395L17.1425 19.7701Z" />
-                                    </svg>
-                                    </Link>
-
                   {/* <!-- Linkedin --> */}
                   <Link
-                    href="https://www.linkedin.com/company/himtika/"
+                    href="https://www.linkedin.com/company/himtikaofficial/"
                     target="_blank"
                     className="w-10 h-10 mr-3 rounded-full flex justify-center items-center bg-white/20 text-white hover:bg-white hover:text-primary"
                   >
@@ -96,7 +77,7 @@ export default function Footer() {
 
                   {/* -- YouTube -- */}
                   <Link
-                    href="https://www.youtube.com/@himtikaofficial4428"
+                    href="https://www.youtube.com/@HimtikaOfficial"
                     target="_blank"
                     className="w-10 h-10 mr-3 rounded-full flex justify-center items-center bg-white/20 text-white hover:bg-white hover:text-primary"
                   >
@@ -128,6 +109,22 @@ export default function Footer() {
                       <title>TikTok</title>
                       <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
                     </svg>
+                  </Link>
+
+                  {/* <!-- Email --> */}
+                  <Link
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=himtika@unsika.ac.id"
+                    target="_blank"
+                    className="w-10 h-10 rounded-full flex justify-center items-center bg-white/20  text-white hover:bg-white hover:text-primary"
+                  >
+                    <svg 
+                      role="img"
+                      width="20"
+                      className="fill-current"
+                      viewBox="0 0 28 28"
+                      xmlns="http://www.w3.org/2000/svg" 
+                    >
+                        <path d="M4.66626 5.1665H23.3333C24.3403 5.1665 25.1661 5.99247 25.1663 6.99951V20.9995C25.1663 22.0067 24.3404 22.8335 23.3333 22.8335H4.66626C3.65922 22.8333 2.83325 22.0066 2.83325 20.9995V6.99951C2.83342 6.05552 3.55932 5.27085 4.47974 5.17627L4.66626 5.1665ZM23.0686 8.90869L13.9993 14.5767L4.93188 8.90869L4.16626 8.43115V21.4995H23.8333V8.43115L23.0686 8.90869ZM4.40161 7.42432L13.7346 13.2573L14.0002 13.4224L14.2649 13.2573L23.5979 7.42432L25.0764 6.49951H2.9231L4.40161 7.42432Z" fill="currentColor" stroke="currentColor"/></svg>
                   </Link>
 
                   {/* <!-- Whatsapp -->
