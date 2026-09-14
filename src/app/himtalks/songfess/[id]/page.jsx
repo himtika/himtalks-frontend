@@ -281,7 +281,7 @@ export default function SongfessDetailPage() {
                     <Dialog.Title className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-none font-playfair font-normal italic">
                         Hello, <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight block md:inline">{songfess.recipient_name || "Anonymous"}</span>
                     </Dialog.Title>
-                    <p className="max-w-[80%] md:max-w-full mx-auto font-poppins text-[10px] sm:text-xs md:text-sm lg:text-base font-medium mt-4 sm:mt-6 md:mt-8">
+                    <p className="max-w-[85%] md:max-w-full mx-auto font-poppins text-[10px] sm:text-xs md:text-sm lg:text-base font-medium mt-4 sm:mt-6 md:mt-8">
                         There's someone sending you a song, they want you to hear this song
                         that maybe you'll like :)
                     </p>
@@ -298,7 +298,7 @@ export default function SongfessDetailPage() {
                             alt="Song Image"
                             crossOrigin="anonymous"
                             draggable={false}
-                            className="rounded-md w-28 h-28 md:w-36 md:h-36 object-cover"
+                            className="rounded-md w-24 h-24 md:w-36 md:h-36 object-cover"
                           />
                         </div>
 
@@ -306,7 +306,7 @@ export default function SongfessDetailPage() {
                         <div className="flex flex-col justify-between min-w-0 w-full h-28 md:h-36">
                           <div className="min-w-0">
                             {/* Judul Lagu: Pakai line-clamp atau tetap biarkan wrap, ukuran text dinamis di mobile */}
-                            <h3 className="font-poppins font-semibold text-darkSage text-sm md:text-lg lg:text-xl tracking-tight text-left leading-tight wrap-break-word line-clamp-3 text-ellipsis">
+                            <h3 className="font-poppins font-semibold text-darkSage text-xs sm:text-sm md:text-lg lg:text-xl tracking-tight text-left leading-tight wrap-break-word line-clamp-3 text-ellipsis">
                               {songfess.song_title || "No music"}
                             </h3>
                             <span className="mt-1 text-[10px] md:text-sm text-left block font-medium tracking-tight text-gray-600 truncate">

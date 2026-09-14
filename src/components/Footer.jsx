@@ -199,7 +199,7 @@ export default function Footer() {
                     </Link>
                     <li>
                       <Link
-                        href="https://www.instagram.com/himtika_unsika/" target="_blank"
+                        href="https://www.instagram.com/hikode/" target="_blank"
                         className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting antialiased transform origin-left transition-all duration-500"
                       >
                         Artikel HIMTIKA
@@ -213,14 +213,6 @@ export default function Footer() {
                         Info Lomba
                       </Link>
                     </li>
-                    <li>
-                      <Link
-                        href="https://www.instagram.com/himtika_unsika/" target="_blank"
-                        className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting antialiased transform origin-left transition-all duration-500"
-                      >
-                        Kegiatan Mahasiswa
-                      </Link>
-                    </li>
                   </ul>
                 </div>
               </div>
@@ -230,12 +222,13 @@ export default function Footer() {
                 <div>
                   <h3 className="font-poppins font-medium md:font-semibold text-white text-base sm:text-lg md:text-xl mb-6">Event</h3>
                   <ul className="text-sm sm:text-base font-playfair">
-                    <li><Link href="https://himtika.cs.unsika.ac.id/open-project/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Open Project</Link></li>
+                    <li><Link href="https://himtika.cs.unsika.ac.id/open-project/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Create and Compete</Link></li>
                     <li><Link href="https://himtika.cs.unsika.ac.id/hgtc/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">HGTC</Link></li>
-                    <li><Link href="https://himtika.cs.unsika.ac.id/semantik_9/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">SEMANTIK 9.0</Link></li>
-                    <li><Link href="https://himtika.cs.unsika.ac.id/pekan-it/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">PEKAN IT</Link></li>
+                    <li><Link href="https://himtika.cs.unsika.ac.id/studyclub/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Study Club</Link></li>
+                    <li><Link href="https://himtika.cs.unsika.ac.id/pekan-it/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Pekan IT: NIC</Link></li>
+                    <li><Link href="https://himtika.cs.unsika.ac.id/pekan-it/detail-semantik/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Pekan IT: Semantik IC</Link></li>
                     <li><Link href="https://himtika.cs.unsika.ac.id/lkmmpd/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">LKMM-PD</Link></li>
-                    <li><Link href="https://himtika.cs.unsika.ac.id/diesnatalis/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Diesnatalis</Link></li>
+                    <li><Link href="https://himtika.cs.unsika.ac.id/diesnatalis/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Dies Natalis</Link></li>
                     <li><Link href="https://himtika.cs.unsika.ac.id/it-bootcamp/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">IT Bootcamp</Link></li>
                   </ul>
                 </div>
@@ -250,13 +243,10 @@ export default function Footer() {
                   <ul className="text-sm sm:text-base font-playfair">
                     <li><Link href="https://himtalks.vercel.app/himtalks" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">HIMTALKS</Link></li>
                     <li><Link href="https://himtika.cs.unsika.ac.id/himtika-awards/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">HIMTIKA Award</Link></li>
-                    <li><Link href="https://himtika.cs.unsika.ac.id/studyclub-2024/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Study Club</Link></li>
                     <li><Link href="https://himtika.cs.unsika.ac.id/media-partner/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Media Partner</Link></li>
                     <li><Link href="https://himtika.cs.unsika.ac.id/corporation/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Corporation</Link></li>
-                    <li><Link href="https://himtika.cs.unsika.ac.id/corporation/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Studio IT</Link></li>
-                    <li><Link href="https://himtika.cs.unsika.ac.id/hikode/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Hikode</Link></li>
                     <li><Link href="https://himtika.cs.unsika.ac.id/kalender/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Kalender</Link></li>
-                    <li><Link href="https://himtika.cs.unsika.ac.id/dosen/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Profil Tenaga Pendidik</Link></li>
+                    <li><Link href="https://himtika.cs.unsika.ac.id/dosen/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Tenaga Pendidik</Link></li>
                   </ul>
                 </div>
               </div>
