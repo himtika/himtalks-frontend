@@ -222,7 +222,7 @@ export default function Footer() {
                 <div>
                   <h3 className="font-poppins font-medium md:font-semibold text-white text-base sm:text-lg md:text-xl mb-6">Event</h3>
                   <ul className="text-sm sm:text-base font-playfair">
-                    <li><Link href="https://himtika.cs.unsika.ac.id/open-project/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Create and Compete</Link></li>
+                    <li><Link href="https://himtika.cs.unsika.ac.id/cnc/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Create and Compete</Link></li>
                     <li><Link href="https://himtika.cs.unsika.ac.id/hgtc/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">HGTC</Link></li>
                     <li><Link href="https://himtika.cs.unsika.ac.id/studyclub/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Study Club</Link></li>
                     <li><Link href="https://himtika.cs.unsika.ac.id/pekan-it/" target="_blank" className="inline-block mb-2 sm:mb-4 hover:scale-125 hover:text-ranting transform origin-left transition-all duration-500">Pekan IT: NIC</Link></li>
