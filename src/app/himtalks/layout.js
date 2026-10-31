@@ -5,6 +5,7 @@ import PageTransition from "@/components/ui/PageTransition";
 import StairTransition from "@/components/ui/StairTransition";
 import BackToHIMTIKA from "@/components/BackToHIMTIKA";
 import { Cormorant_Garamond, Poppins, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
     title: "HIMTALKS ー HIMTIKA ー Himpunan Mahasiswa Informatika UNSIKA",
@@ -44,6 +45,7 @@ export default function RootLayout({ children }) {
             </PageTransition>
             <BackToHIMTIKA />
             <Footer />
+            <Analytics />
         </body>
       </html>
     </>
